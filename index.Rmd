@@ -1,0 +1,9 @@
+---
+title: "R notes while learning R"
+author: "Scott Ming"
+date: "2016年7月30日"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+这里是明生学 R 的笔记。

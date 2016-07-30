@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R notes while learning R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R notes while learning R">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R notes while learning R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R notes while learning R" />
+  
+  
+  
+
+<meta name="author" content="Scott Ming">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="0.1" data-path=""><a href="#section-0.1"><i class="fa fa-check"></i><b>0.1</b> 向量</a></li>
+<li class="chapter" data-level="0.2" data-path=""><a href="#section-0.2"><i class="fa fa-check"></i><b>0.2</b> 矩阵</a></li>
+<li class="chapter" data-level="0.3" data-path=""><a href="#section-0.3"><i class="fa fa-check"></i><b>0.3</b> 数据框</a></li>
+<li class="chapter" data-level="0.4" data-path=""><a href="#section-0.4"><i class="fa fa-check"></i><b>0.4</b> 列表</a></li>
+<li class="chapter" data-level="0.5" data-path=""><a href="#section-0.5"><i class="fa fa-check"></i><b>0.5</b> 特殊对象</a></li>
+<li class="chapter" data-level="0.6" data-path=""><a href="#section-0.6"><i class="fa fa-check"></i><b>0.6</b> 数据读取与输出</a></li>
+<li class="chapter" data-level="0.7" data-path=""><a href="#-apply-"><i class="fa fa-check"></i><b>0.7</b> 向量化操作之 apply 家族</a></li>
+<li class="chapter" data-level="0.8" data-path=""><a href="#section-0.8"><i class="fa fa-check"></i><b>0.8</b> 数据整理、转换</a></li>
+<li class="chapter" data-level="0.9" data-path=""><a href="#section-0.9"><i class="fa fa-check"></i><b>0.9</b> 导入数据</a></li>
+<li class="chapter" data-level="0.10" data-path=""><a href="#-filter"><i class="fa fa-check"></i><b>0.10</b> 数据筛选 filter，返回满足条件的观测值</a></li>
+<li class="chapter" data-level="0.11" data-path=""><a href="#-select"><i class="fa fa-check"></i><b>0.11</b> 子集选取 select，只保留选择的变量</a></li>
+<li class="chapter" data-level="0.12" data-path=""><a href="#-arrange"><i class="fa fa-check"></i><b>0.12</b> 数据排序 arrange</a></li>
+<li class="chapter" data-level="0.13" data-path=""><a href="#-mutate"><i class="fa fa-check"></i><b>0.13</b> 数据扩展 mutate</a></li>
+<li class="chapter" data-level="0.14" data-path=""><a href="#-summarise"><i class="fa fa-check"></i><b>0.14</b> 数据汇总 summarise</a></li>
+<li class="chapter" data-level="0.15" data-path=""><a href="#-join"><i class="fa fa-check"></i><b>0.15</b> 数据连接 join</a></li>
+<li class="chapter" data-level="0.16" data-path=""><a href="#-group_by"><i class="fa fa-check"></i><b>0.16</b> 分组汇总 group_by</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R notes while learning R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R notes while learning R</h1>
+<h4 class="author"><em>Scott Ming</em></h4>
+<h4 class="date"><em>2016年7月30日</em></h4>
+</div>
+<p>这里是明生学 R 的笔记。</p>
+
+<div id="section-0.1" class="section level2">
+<h2><span class="header-section-number">0.1</span> 向量</h2>
+<p>R 里面的向量看起来像 Python 的 list，但又不是 list，更像是Python 里一维的数组。</p>
+<p><strong>向量入门</strong></p>
+<p>基础</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>)
+vec[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)]
+<span class="co">#&gt; [1] 1 2 6</span>
+<span class="kw">class</span>(vec)
+<span class="co">#&gt; [1] &quot;numeric&quot;</span>
+vec[<span class="dv">1</span>:<span class="dv">2</span>] <span class="co"># 末尾包含</span>
+<span class="co">#&gt; [1] 1 2</span></code></pre></div>
+<p>Python 代码,除了用列表推导式之外还可以直接用 Numpy 实现</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+a<span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>])
+<span class="bu">print</span>(a[[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>]])
+<span class="bu">print</span>(<span class="bu">type</span>(a))</code></pre></div>
+<pre><code>## [1 2 6]
+## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<p>创建向量 类 Python range</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>)
+a
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span>
+b &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">13</span>)
+b
+<span class="co">#&gt; [1] 10 11 12 13</span>
+temp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>)
+temp *<span class="st"> </span>b
+<span class="co">#&gt; [1] 10 22 48  0</span></code></pre></div>
+<p>生成有规律的向量， 类 np.linspace</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">10</span>) <span class="co"># 还有个long参数也非常有用。</span>
+vec
+<span class="co">#&gt;  [1]   1  12  23  34  45  56  67  78  89 100</span>
+vec[-<span class="dv">4</span>] <span class="co">#这点跟 Python 很不一样</span>
+<span class="co">#&gt; [1]   1  12  23  45  56  67  78  89 100</span>
+
+<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">2</span>, <span class="dt">to=</span><span class="dv">1000</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)
+<span class="co">#&gt;  [1]    2.0000  112.8889  223.7778  334.6667  445.5556  556.4444  667.3333</span>
+<span class="co">#&gt;  [8]  778.2222  889.1111 1000.0000</span>
+<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">2</span>, <span class="dt">to=</span><span class="dv">1000</span>, <span class="dt">length=</span><span class="dv">10</span>)
+<span class="co">#&gt;  [1]    2.0000  112.8889  223.7778  334.6667  445.5556  556.4444  667.3333</span>
+<span class="co">#&gt;  [8]  778.2222  889.1111 1000.0000</span>
+
+group1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">9</span>))
+group2 &lt;-<span class="st"> </span><span class="kw">factor</span>(group1) <span class="co"># 转换成因子</span>
+group1
+<span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3</span>
+<span class="kw">class</span>(group1)
+<span class="co">#&gt; [1] &quot;integer&quot;</span>
+<span class="kw">class</span>(group2)
+<span class="co">#&gt; [1] &quot;factor&quot;</span>
+<span class="kw">length</span>(group1) <span class="co"># as Py len</span>
+<span class="co">#&gt; [1] 27</span></code></pre></div>
+<p>随机向量</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec_random1 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">5</span>) <span class="co"># 0-1</span>
+vec_random1
+<span class="co">#&gt; [1] 0.1301866 0.6891803 0.7843612 0.1212942 0.1194212</span>
+vec_random2 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="co"># 随机字符向量</span>
+vec_random2
+<span class="co">#&gt;  [1] &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</span>
+vector1 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">10</span>)
+vector1 <span class="co"># empty vector</span>
+<span class="co">#&gt;  [1] 0 0 0 0 0 0 0 0 0 0</span></code></pre></div>
+<p>逻辑判断</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp[<span class="dv">1</span>:<span class="dv">3</span>]
+<span class="co">#&gt; [1] 1 2 4</span>
+temp[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]
+<span class="co">#&gt; [1] 1 2</span>
+temp[temp &gt;<span class="st"> </span><span class="dv">1</span>]
+<span class="co">#&gt; [1] 2 4</span></code></pre></div>
+</div>
+<div id="section-0.2" class="section level2">
+<h2><span class="header-section-number">0.2</span> 矩阵</h2>
+<p>矩阵是二维的容器，可包含数值、逻辑、字符等数据</p>
+<p>生成矩阵</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vector &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">12</span>
+<span class="kw">class</span>(vector)
+<span class="co">#&gt; [1] &quot;integer&quot;</span>
+my_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(vector, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)
+<span class="kw">dim</span>(my_matrix)
+<span class="co">#&gt; [1] 3 4</span>
+vector
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span>
+my_matrix
+<span class="co">#&gt;      [,1] [,2] [,3] [,4]</span>
+<span class="co">#&gt; [1,]    1    4    7   10</span>
+<span class="co">#&gt; [2,]    2    5    8   11</span>
+<span class="co">#&gt; [3,]    3    6    9   12</span>
+
+vector1 &lt;-<span class="st"> </span>vector2 &lt;-<span class="st"> </span>vector3 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">3</span>)
+my_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(vector1, vector2, vector3) <span class="co"># 一致的向量类型进行合并</span>
+my_matrix
+<span class="co">#&gt;        vector1   vector2   vector3</span>
+<span class="co">#&gt; [1,] 0.2892481 0.2892481 0.2892481</span>
+<span class="co">#&gt; [2,] 0.6438454 0.6438454 0.6438454</span>
+<span class="co">#&gt; [3,] 0.6423464 0.6423464 0.6423464</span>
+<span class="kw">round</span>(my_matrix*<span class="dv">10</span>, <span class="dt">digits =</span> <span class="dv">2</span>) <span class="co"># 取2位</span>
+<span class="co">#&gt;      vector1 vector2 vector3</span>
+<span class="co">#&gt; [1,]    2.89    2.89    2.89</span>
+<span class="co">#&gt; [2,]    6.44    6.44    6.44</span>
+<span class="co">#&gt; [3,]    6.42    6.42    6.42</span></code></pre></div>
+<p>取子集和计算</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dt">ncol =</span> <span class="dv">3</span>)
+<span class="kw">print</span>(my_mat)
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    8    1    6</span>
+<span class="co">#&gt; [2,]    3    5    7</span>
+<span class="co">#&gt; [3,]    4    9    2</span>
+
+my_mat[<span class="dv">1</span>,<span class="dv">1</span>] +<span class="st"> </span>my_mat[<span class="dv">1</span>, <span class="dv">2</span>] +<span class="st"> </span>my_mat[<span class="dv">1</span>,<span class="dv">3</span>]
+<span class="co">#&gt; [1] 15</span>
+<span class="kw">sum</span>(my_mat[<span class="dv">1</span>,])
+<span class="co">#&gt; [1] 15</span>
+<span class="kw">rowSums</span>(my_mat)
+<span class="co">#&gt; [1] 15 15 15</span>
+<span class="kw">colSums</span>(my_mat)
+<span class="co">#&gt; [1] 15 15 15</span>
+<span class="kw">sum</span>(<span class="kw">diag</span>(my_mat))
+<span class="co">#&gt; [1] 15</span>
+
+<span class="kw">class</span>(my_mat[<span class="dv">1</span>,]) <span class="co"># 退化成向量了</span>
+<span class="co">#&gt; [1] &quot;numeric&quot;</span>
+my_mat[<span class="dv">1</span>, , drop=<span class="ot">FALSE</span>] <span class="co"># 保留矩阵属性</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    8    1    6</span>
+my_mat[my_mat &lt;=<span class="st"> </span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># 改变赋值</span>
+my_mat
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    8    0    6</span>
+<span class="co">#&gt; [2,]    0    0    7</span>
+<span class="co">#&gt; [3,]    0    9    0</span>
+
+<span class="co"># ifelse 函数</span>
+my_mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dt">ncol =</span> <span class="dv">3</span>)
+<span class="kw">ifelse</span>(my_mat &gt;<span class="st"> </span><span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    1    1    1</span>
+<span class="co">#&gt; [2,]    1    1    1</span>
+<span class="co">#&gt; [3,]    1    1    1</span></code></pre></div>
+</div>
+<div id="section-0.3" class="section level2">
+<h2><span class="header-section-number">0.3</span> 数据框</h2>
+<p>优点在于不同向量的数据类型可以不一样，但各列的长度必须一致</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">city &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>)
+temp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">23</span>, <span class="dv">14</span>)
+data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(city, temp) <span class="co"># 对于 list，Py 不能直接这么导，会把整数向量变为索引，得用 dir 的方式</span>
+data
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="co">#&gt; 2    B   29</span>
+<span class="co">#&gt; 3    C   23</span>
+<span class="co">#&gt; 4    D   14</span>
+data[, <span class="dv">1</span>] <span class="co"># Py data.ix[:,0] | data.iloc[:,0]</span>
+<span class="co">#&gt; [1] A B C D</span>
+<span class="co">#&gt; Levels: A B C D</span>
+data$temp
+<span class="co">#&gt; [1] 27 29 23 14</span>
+<span class="kw">class</span>(data$city) <span class="co"># 本是字符，自动转了因子，若不想转，课用 stringAsFactors = FALSE 设定</span>
+<span class="co">#&gt; [1] &quot;factor&quot;</span></code></pre></div>
+<p>组合索引</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data[data$temp &gt;<span class="st"> </span><span class="kw">mean</span>(data$temp), ]
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="co">#&gt; 2    B   29</span>
+<span class="co"># data[&#39;temp&#39;, ] # empty，这是提取行的语法</span>
+data[, <span class="st">&#39;city&#39;</span>] <span class="co"># 提取列</span>
+<span class="co">#&gt; [1] A B C D</span>
+<span class="co">#&gt; Levels: A B C D</span>
+data$temp &gt;<span class="st"> </span><span class="kw">mean</span>(data$temp)
+<span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE</span>
+<span class="kw">with</span>(data, data[temp &gt;<span class="st"> </span><span class="kw">mean</span>(temp), ]) <span class="co"># 直接操作列名,省略 $</span>
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="co">#&gt; 2    B   29</span>
+<span class="kw">with</span>(data, data[temp &gt;<span class="st"> </span><span class="kw">mean</span>(temp), <span class="st">&#39;city&#39;</span>]) 
+<span class="co">#&gt; [1] A B</span>
+<span class="co">#&gt; Levels: A B C D</span></code></pre></div>
+<p>熟悉数据框最快的办法</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data) <span class="co"># as Py describe</span>
+<span class="co">#&gt;  city       temp      </span>
+<span class="co">#&gt;  A:1   Min.   :14.00  </span>
+<span class="co">#&gt;  B:1   1st Qu.:20.75  </span>
+<span class="co">#&gt;  C:1   Median :25.00  </span>
+<span class="co">#&gt;  D:1   Mean   :23.25  </span>
+<span class="co">#&gt;        3rd Qu.:27.50  </span>
+<span class="co">#&gt;        Max.   :29.00</span>
+<span class="kw">dim</span>(data) <span class="co"># as Py data.shape</span>
+<span class="co">#&gt; [1] 4 2</span>
+<span class="kw">head</span>(data) <span class="co"># 看前6行</span>
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="co">#&gt; 2    B   29</span>
+<span class="co">#&gt; 3    C   23</span>
+<span class="co">#&gt; 4    D   14</span>
+<span class="co">#data.head(1) # 不能这么干</span>
+<span class="kw">head</span>(data, <span class="dt">n =</span> 1L)
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="kw">str</span>(data) <span class="co"># 返回数据结构</span>
+<span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  2 variables:</span>
+<span class="co">#&gt;  $ city: Factor w/ 4 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;: 1 2 3 4</span>
+<span class="co">#&gt;  $ temp: num  27 29 23 14</span></code></pre></div>
+<p>数据框的排序</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(data$temp) <span class="co"># 返回数据的索引号</span>
+<span class="co">#&gt; [1] 4 3 1 2</span>
+data[<span class="kw">order</span>(data$temp), ]
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 4    D   14</span>
+<span class="co">#&gt; 3    C   23</span>
+<span class="co">#&gt; 1    A   27</span>
+<span class="co">#&gt; 2    B   29</span>
+data[<span class="kw">order</span>(data$temp, <span class="dt">decreasing =</span> T), ][<span class="dv">1</span>:<span class="dv">2</span>, ] <span class="co"># 反序</span>
+<span class="co">#&gt;   city temp</span>
+<span class="co">#&gt; 2    B   29</span>
+<span class="co">#&gt; 1    A   27</span></code></pre></div>
+</div>
+<div id="section-0.4" class="section level2">
+<h2><span class="header-section-number">0.4</span> 列表</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">temp =</span> temp, <span class="dt">city =</span> city)
+<span class="kw">print</span>(data_list)
+<span class="co">#&gt; $temp</span>
+<span class="co">#&gt; [1] 27 29 23 14</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $city</span>
+<span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot;</span>
+
+data_list$mat &lt;-<span class="st"> </span>my_mat
+data_list$data &lt;-<span class="st"> </span>data
+<span class="kw">names</span>(data_list)
+<span class="co">#&gt; [1] &quot;temp&quot; &quot;city&quot; &quot;mat&quot;  &quot;data&quot;</span>
+<span class="kw">class</span>(data_list[<span class="dv">3</span>])
+<span class="co">#&gt; [1] &quot;list&quot;</span>
+data_list[<span class="dv">3</span>]
+<span class="co">#&gt; $mat</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    8    1    6</span>
+<span class="co">#&gt; [2,]    3    5    7</span>
+<span class="co">#&gt; [3,]    4    9    2</span>
+data_list[[<span class="dv">3</span>]] <span class="co"># 没有 name</span>
+<span class="co">#&gt;      [,1] [,2] [,3]</span>
+<span class="co">#&gt; [1,]    8    1    6</span>
+<span class="co">#&gt; [2,]    3    5    7</span>
+<span class="co">#&gt; [3,]    4    9    2</span>
+<span class="kw">class</span>(data_list[[<span class="dv">3</span>]])
+<span class="co">#&gt; [1] &quot;matrix&quot;</span></code></pre></div>
+</div>
+<div id="section-0.5" class="section level2">
+<h2><span class="header-section-number">0.5</span> 特殊对象</h2>
+<p>缺失值和空值</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">23</span>, <span class="dv">14</span>, <span class="ot">NA</span>)
+<span class="kw">mean</span>(temp)
+<span class="co">#&gt; [1] NA</span>
+<span class="kw">mean</span>(temp, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; [1] 23.25</span>
+temp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">23</span>, <span class="dv">14</span>, <span class="ot">NULL</span>)
+data_list &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># 快速删除一列</span>
+<span class="kw">mean</span>(temp) <span class="co"># TRUE</span>
+<span class="co">#&gt; [1] 23.25</span></code></pre></div>
+<p>连接</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">textcon =<span class="st"> </span><span class="kw">textConnection</span>(<span class="st">&#39;output&#39;</span>, <span class="st">&#39;w&#39;</span>)
+<span class="kw">sink</span>(textcon) <span class="co"># 开</span>
+x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>)
+<span class="kw">summary</span>(x)
+<span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span class="co">#&gt; 0.04599 0.33850 0.50720 0.53870 0.81580 0.98520</span>
+<span class="kw">print</span>(<span class="st">&#39;这话不显示了，写入了 output 对象了&#39;</span>)
+<span class="co">#&gt; [1] &quot;这话不显示了，写入了 output 对象了&quot;</span>
+<span class="kw">sink</span>() <span class="co"># 关闭控制台转换</span>
+<span class="kw">print</span>(output)
+<span class="co">#&gt; character(0)</span>
+
+<span class="kw">showConnections</span>()
+<span class="co">#&gt;   description class            mode text   isopen   can read can write</span>
+<span class="co">#&gt; 4 &quot;output&quot;    &quot;textConnection&quot; &quot;wr&quot; &quot;text&quot; &quot;opened&quot; &quot;no&quot;     &quot;yes&quot;    </span>
+<span class="co">#&gt; 5 &quot;output&quot;    &quot;textConnection&quot; &quot;w&quot;  &quot;text&quot; &quot;opened&quot; &quot;no&quot;     &quot;yes&quot;</span>
+<span class="kw">class</span>(textcon)
+<span class="co">#&gt; [1] &quot;textConnection&quot; &quot;connection&quot;</span>
+<span class="kw">close</span>(textcon)</code></pre></div>
+<p>公式</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">50</span>
+xvar &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;x&#39;</span>, n )
+right &lt;-<span class="st"> </span><span class="kw">paste</span>(xvar, <span class="dt">collapse =</span> <span class="st">&#39; + &#39;</span>)
+left &lt;-<span class="st"> &#39;y~&#39;</span>
+my_formula &lt;-<span class="st"> </span><span class="kw">paste</span>(left, right)
+my_formula &lt;-<span class="st"> </span><span class="kw">as.formula</span>(my_formula)
+<span class="kw">class</span>(my_formula)
+<span class="co">#&gt; [1] &quot;formula&quot;</span>
+
+left
+<span class="co">#&gt; [1] &quot;y~&quot;</span></code></pre></div>
+<p>表达式</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ex &lt;-<span class="st"> </span><span class="kw">expression</span>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>))
+<span class="kw">print</span>(ex)
+<span class="co">#&gt; expression(x &lt;- seq(1, 10, 2))</span>
+<span class="kw">class</span>(ex)
+<span class="co">#&gt; [1] &quot;expression&quot;</span>
+<span class="kw">eval</span>(ex)
+<span class="kw">print</span>(x)
+<span class="co">#&gt; [1] 1 3 5 7 9</span>
+
+tex &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;z&lt;-seq(1, 10, 2)&#39;</span>, <span class="st">&#39;print(z)&#39;</span> )
+<span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> tex))
+<span class="co">#&gt; [1] 1 3 5 7 9</span></code></pre></div>
+<p>环境变量</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()
+<span class="co">#&gt;  [1] &quot;a&quot;           &quot;b&quot;           &quot;city&quot;        &quot;data&quot;        &quot;data_list&quot;  </span>
+<span class="co">#&gt;  [6] &quot;ex&quot;          &quot;group1&quot;      &quot;group2&quot;      &quot;left&quot;        &quot;my_formula&quot; </span>
+<span class="co">#&gt; [11] &quot;my_mat&quot;      &quot;my_matrix&quot;   &quot;n&quot;           &quot;output&quot;      &quot;right&quot;      </span>
+<span class="co">#&gt; [16] &quot;temp&quot;        &quot;tex&quot;         &quot;textcon&quot;     &quot;vec&quot;         &quot;vec_random1&quot;</span>
+<span class="co">#&gt; [21] &quot;vec_random2&quot; &quot;vector&quot;      &quot;vector1&quot;     &quot;vector2&quot;     &quot;vector3&quot;    </span>
+<span class="co">#&gt; [26] &quot;x&quot;           &quot;xvar&quot;        &quot;z&quot;</span>
+env1 &lt;-<span class="st"> </span><span class="kw">new.env</span>()
+
+<span class="kw">assign</span>(<span class="st">&quot;x1&quot;</span>, <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">envir =</span> env1)
+<span class="kw">ls</span>(<span class="dt">envir =</span> env1)
+<span class="co">#&gt; [1] &quot;x1&quot;</span>
+<span class="kw">get</span>(<span class="st">&#39;x1&#39;</span>, <span class="dt">envir =</span> env1) <span class="co"># 为啥没法直接用 x1 取呢？</span>
+<span class="co">#&gt; [1] 1 2 3 4 5</span>
+
+<span class="kw">exists</span>(<span class="st">&#39;x1&#39;</span>, <span class="dt">envir =</span> env1)
+<span class="co">#&gt; [1] TRUE</span>
+<span class="kw">rm</span>(<span class="st">&#39;x1&#39;</span>, <span class="dt">envir =</span> env1)</code></pre></div>
+<p>函数</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] 2.718282</span>
+
+myfunc &lt;-<span class="st"> </span>function(r){
+  area &lt;-<span class="st"> </span>pi*r^<span class="dv">2</span>
+  <span class="kw">return</span>(area)
+} <span class="co"># 内部可以调用 global value</span>
+<span class="kw">print</span>(<span class="kw">myfunc</span>(<span class="dv">4</span>)) 
+<span class="co">#&gt; [1] 50.26548</span>
+
+myfunc
+<span class="co">#&gt; function(r){</span>
+<span class="co">#&gt;   area &lt;- pi*r^2</span>
+<span class="co">#&gt;   return(area)</span>
+<span class="co">#&gt; }</span></code></pre></div>
+
+</div>
+<div id="section-0.6" class="section level2">
+<h2><span class="header-section-number">0.6</span> 数据读取与输出</h2>
+<div id="-read.table" class="section level4">
+<h4><span class="header-section-number">0.6.0.1</span> 读取 read.table</h4>
+<p>读取普通数据可用 read.table，有6个参数比较重要：</p>
+<ul>
+<li>file：文件路径</li>
+<li>sep：文件的分隔符，缺省无</li>
+<li>skip：跳过开始的 skip 行开始读取</li>
+<li>header：是否将第一行读取为列名，缺省 FALSE</li>
+<li>nrows：读取的行数</li>
+<li>fill：将缺失数据定为 NA, 缺省并无指定</li>
+</ul>
+</div>
+<div id="-readr" class="section level4">
+<h4><span class="header-section-number">0.6.0.2</span> 高阶包 readr</h4>
+<p>也可用 readr 包读取表格型数据，不仅速度快，且能直接读取为 tbl 格式。参考 <a href="http://www.xueqing.tv/cms/article/102">readr 介绍</a>。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)</code></pre></div>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 3.3.1</code></pre>
+<p>read_csv 和 read_tsv 分别读取分隔符为逗号和制表符的数据，read_csv2 则是读取分号分割的数据，read_dlim 读取自定义的。</p>
+<p>函数定义：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_delim</span>(file, delim, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">escape_backslash =</span> <span class="ot">FALSE</span>,
+  <span class="dt">escape_double =</span> <span class="ot">TRUE</span>, <span class="dt">col_names =</span> <span class="ot">TRUE</span>, <span class="dt">col_types =</span> <span class="ot">NULL</span>,
+  <span class="dt">locale =</span> <span class="kw">default_locale</span>(), <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>), <span class="dt">comment =</span> <span class="st">&quot;&quot;</span>, <span class="dt">skip =</span> <span class="dv">0</span>,
+  <span class="dt">n_max =</span> -<span class="dv">1</span>, <span class="dt">progress =</span> <span class="kw">interactive</span>())</code></pre></div>
+<p>write_csv 用于写入数据，不写入行名。</p>
+<p>函数定义</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_csv</span>(x, path, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>, <span class="dt">append =</span> <span class="ot">FALSE</span>, <span class="dt">col_names =</span> !append)</code></pre></div>
+</div>
+</div>
+<div id="-apply-" class="section level2">
+<h2><span class="header-section-number">0.7</span> 向量化操作之 apply 家族</h2>
+<ul>
+<li>参考1：<a href="http://blog.fens.me/r-apply/">掌握R语言中的apply函数族</a></li>
+<li>参考2：<a href="http://stackoverflow.com/questions/3505701/r-grouping-functions-sapply-vs-lapply-vs-apply-vs-tapply-vs-by-vs-aggrega">R Grouping functions: sapply vs. lapply vs. apply. vs. tapply vs. by vs. aggregate</a></li>
+<li>参考3：<a href="http://www.xueqing.tv/cms/article/158">R语言apply家族函数的用法及其比较</a></li>
+</ul>
+<div id="-lapplysapply" class="section level4">
+<h4><span class="header-section-number">0.7.0.1</span> 循环迭代之 lapply/sapply</h4>
+<p><strong>sapply，lapply 的简化版</strong></p>
+<p>第一参数是 X，官方解释说，可接收向量，list，或表达式对象，其他对象将被强制按 list，第二个参数则是函数，返回一个向量或矩阵。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">func &lt;-<span class="st"> </span>function(x){
+  if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+    ret &lt;-<span class="st"> &#39;even&#39;</span>
+  }
+  else {
+    ret &lt;-<span class="st"> &#39;odd&#39;</span>
+  }
+  <span class="kw">return</span>(ret)
+}
+vec &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">4</span>)*<span class="dv">100</span>)
+<span class="kw">func</span>(vec)
+<span class="co">#&gt; Warning in if (x%%2 == 0) {: the condition has length &gt; 1 and only the</span>
+<span class="co">#&gt; first element will be used</span>
+<span class="co">#&gt; [1] &quot;odd&quot;</span>
+vec
+<span class="co">#&gt; [1] 59  8  5 23</span>
+<span class="kw">sapply</span>(vec, func)
+<span class="co">#&gt; [1] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;odd&quot;</span></code></pre></div>
+<p><strong>lapply</strong></p>
+<p>跟 sapply 的区别在于返回的是列表</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(vec, func)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] &quot;odd&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] &quot;even&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] &quot;odd&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] &quot;odd&quot;</span>
+mylist &lt;-<span class="st"> </span><span class="kw">as.list</span>(iris[, <span class="dv">1</span>:<span class="dv">4</span>]) <span class="co"># 不转list，也是强按</span>
+yourdata &lt;-<span class="st"> </span>iris[, <span class="dv">1</span>:<span class="dv">4</span>]
+
+<span class="kw">sapply</span>(mylist, mean) <span class="co"># 还可以对列表进行计算</span>
+<span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span>
+<span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span>
+<span class="kw">lapply</span>(mylist, mean) <span class="co"># return a list</span>
+<span class="co">#&gt; $Sepal.Length</span>
+<span class="co">#&gt; [1] 5.843333</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Sepal.Width</span>
+<span class="co">#&gt; [1] 3.057333</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Length</span>
+<span class="co">#&gt; [1] 3.758</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Width</span>
+<span class="co">#&gt; [1] 1.199333</span>
+
+myfunc &lt;-<span class="st"> </span>function(x) {
+  ret &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(x),<span class="kw">sd</span>(x))
+  <span class="kw">return</span>(ret)
+}
+result &lt;-<span class="st"> </span><span class="kw">lapply</span>(mylist, myfunc)
+result
+<span class="co">#&gt; $Sepal.Length</span>
+<span class="co">#&gt; [1] 5.8433333 0.8280661</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Sepal.Width</span>
+<span class="co">#&gt; [1] 3.0573333 0.4358663</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Length</span>
+<span class="co">#&gt; [1] 3.758000 1.765298</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Width</span>
+<span class="co">#&gt; [1] 1.1993333 0.7622377</span>
+
+<span class="kw">t</span>(<span class="kw">sapply</span>(result, <span class="st">&#39;[&#39;</span>)) <span class="co"># list数据转 data.frame</span>
+<span class="co">#&gt;                  [,1]      [,2]</span>
+<span class="co">#&gt; Sepal.Length 5.843333 0.8280661</span>
+<span class="co">#&gt; Sepal.Width  3.057333 0.4358663</span>
+<span class="co">#&gt; Petal.Length 3.758000 1.7652982</span>
+<span class="co">#&gt; Petal.Width  1.199333 0.7622377</span></code></pre></div>
+</div>
+<div id="section-0.7.0.2" class="section level4">
+<h4><span class="header-section-number">0.7.0.2</span> 分组运算</h4>
+<p><strong>apply</strong></p>
+<p>第一个参数接收数组或矩阵，MARGIN 参数按行或列计算</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+vec &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">12</span>)*<span class="dv">100</span>)
+mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)
+<span class="kw">apply</span>(mat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, sum) <span class="co"># 1为行，2为列</span>
+<span class="co">#&gt; [1] 218 144 228</span></code></pre></div>
+<p><strong>tapply</strong></p>
+<p>tapply用于分组的循环计算，通过INDEX参数可以把数据集X进行分组，相当于group by的操作。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)
+<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span>
+<span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span>
+<span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span>
+<span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span>
+<span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span>
+<span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span>
+<span class="kw">with</span>(iris, <span class="kw">tapply</span>(Sepal.Length, <span class="kw">list</span>(Species), mean))
+<span class="co">#&gt;     setosa versicolor  virginica </span>
+<span class="co">#&gt;      5.006      5.936      6.588</span></code></pre></div>
+<p><strong>aggregate</strong></p>
+<p>比较友好，返回的是数据框</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris$Sepal.Length, <span class="kw">list</span>(iris$Species), mean)
+<span class="co">#&gt;      Group.1     x</span>
+<span class="co">#&gt; 1     setosa 5.006</span>
+<span class="co">#&gt; 2 versicolor 5.936</span>
+<span class="co">#&gt; 3  virginica 6.588</span></code></pre></div>
+</div>
+<div id="section-0.7.0.3" class="section level4">
+<h4><span class="header-section-number">0.7.0.3</span> 多参数运算</h4>
+<p><strong>mapply</strong></p>
+<p>这个函数目前理解的还不是很透彻，待补。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapply</span>(rep, <span class="dt">times =</span> <span class="dv">1</span>:<span class="dv">4</span>, <span class="dt">x =</span> <span class="dv">4</span>:<span class="dv">1</span>)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 3 3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 2 2 2</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] 1 1 1 1</span></code></pre></div>
+</div>
+</div>
+<div id="section-0.8" class="section level2">
+<h2><span class="header-section-number">0.8</span> 数据整理、转换</h2>
+<div id="reshape2" class="section level4">
+<h4><span class="header-section-number">0.8.0.1</span> reshape2</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subdata &lt;-iris[,<span class="dv">4</span>:<span class="dv">5</span>]
+<span class="kw">head</span>(subdata)
+<span class="co">#&gt;   Petal.Width Species</span>
+<span class="co">#&gt; 1         0.2  setosa</span>
+<span class="co">#&gt; 2         0.2  setosa</span>
+<span class="co">#&gt; 3         0.2  setosa</span>
+<span class="co">#&gt; 4         0.2  setosa</span>
+<span class="co">#&gt; 5         0.2  setosa</span>
+<span class="co">#&gt; 6         0.4  setosa</span>
+data_w &lt;-<span class="st"> </span><span class="kw">unstack</span>(subdata)
+<span class="kw">colMeans</span>(data_w)
+<span class="co">#&gt;     setosa versicolor  virginica </span>
+<span class="co">#&gt;      0.246      1.326      2.026</span></code></pre></div>
+<p>实践中这种单纯的长宽格式并不多见，更常见的是直接一步得到结果，所以就需要强大的 reshape2 包</p>
+<p>参考<a href="http://seananderson.ca/2013/10/19/reshape.html">An Introduction to reshape2</a></p>
+<p>加载包和改数据名</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+<span class="kw">names</span>(airquality) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">names</span>(airquality))
+<span class="kw">head</span>(airquality)
+<span class="co">#&gt;   ozone solar.r wind temp month day</span>
+<span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
+<span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
+<span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
+<span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
+<span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></code></pre></div>
+<p><strong>melt 熔化转长格式</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aql &lt;-<span class="st"> </span><span class="kw">melt</span>(airquality)
+<span class="co">#&gt; No id variables; using all as measure variables</span>
+<span class="kw">tail</span>(aql)
+<span class="co">#&gt;     variable value</span>
+<span class="co">#&gt; 913      day    25</span>
+<span class="co">#&gt; 914      day    26</span>
+<span class="co">#&gt; 915      day    27</span>
+<span class="co">#&gt; 916      day    28</span>
+<span class="co">#&gt; 917      day    29</span>
+<span class="co">#&gt; 918      day    30</span>
+<span class="kw">head</span>(aql)
+<span class="co">#&gt;   variable value</span>
+<span class="co">#&gt; 1    ozone    41</span>
+<span class="co">#&gt; 2    ozone    36</span>
+<span class="co">#&gt; 3    ozone    12</span>
+<span class="co">#&gt; 4    ozone    18</span>
+<span class="co">#&gt; 5    ozone    NA</span>
+<span class="co">#&gt; 6    ozone    28</span></code></pre></div>
+<p>设定不需要变 value 的变量</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aql &lt;-<span class="st"> </span><span class="kw">melt</span>(airquality,<span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&#39;month&#39;</span>, <span class="st">&#39;day&#39;</span>))
+<span class="kw">names</span>(airquality)
+<span class="co">#&gt; [1] &quot;ozone&quot;   &quot;solar.r&quot; &quot;wind&quot;    &quot;temp&quot;    &quot;month&quot;   &quot;day&quot;</span>
+<span class="kw">head</span>(aql)
+<span class="co">#&gt;   month day variable value</span>
+<span class="co">#&gt; 1     5   1    ozone    41</span>
+<span class="co">#&gt; 2     5   2    ozone    36</span>
+<span class="co">#&gt; 3     5   3    ozone    12</span>
+<span class="co">#&gt; 4     5   4    ozone    18</span>
+<span class="co">#&gt; 5     5   5    ozone    NA</span>
+<span class="co">#&gt; 6     5   6    ozone    28</span></code></pre></div>
+<p>改名</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aql &lt;-<span class="st"> </span><span class="kw">melt</span>(airquality, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>),
+            <span class="dt">variable.name =</span> <span class="st">&quot;climate_variable&quot;</span>,
+            <span class="dt">value.name =</span> <span class="st">&quot;climate_value&quot;</span>)
+<span class="kw">head</span>(aql)
+<span class="co">#&gt;   month day climate_variable climate_value</span>
+<span class="co">#&gt; 1     5   1            ozone            41</span>
+<span class="co">#&gt; 2     5   2            ozone            36</span>
+<span class="co">#&gt; 3     5   3            ozone            12</span>
+<span class="co">#&gt; 4     5   4            ozone            18</span>
+<span class="co">#&gt; 5     5   5            ozone            NA</span>
+<span class="co">#&gt; 6     5   6            ozone            28</span>
+<span class="kw">head</span>(airquality)
+<span class="co">#&gt;   ozone solar.r wind temp month day</span>
+<span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
+<span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
+<span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
+<span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
+<span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></code></pre></div>
+<p><strong>dcast 重铸，长转宽</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aql &lt;-<span class="st"> </span><span class="kw">melt</span>(airquality, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>))
+aqw  &lt;-<span class="st"> </span><span class="kw">dcast</span>(aql, month +<span class="st"> </span>day ~<span class="st"> </span>variable)
+<span class="kw">head</span>(aql)
+<span class="co">#&gt;   month day variable value</span>
+<span class="co">#&gt; 1     5   1    ozone    41</span>
+<span class="co">#&gt; 2     5   2    ozone    36</span>
+<span class="co">#&gt; 3     5   3    ozone    12</span>
+<span class="co">#&gt; 4     5   4    ozone    18</span>
+<span class="co">#&gt; 5     5   5    ozone    NA</span>
+<span class="co">#&gt; 6     5   6    ozone    28</span>
+<span class="kw">head</span>(aqw)
+<span class="co">#&gt;   month day ozone solar.r wind temp</span>
+<span class="co">#&gt; 1     5   1    41     190  7.4   67</span>
+<span class="co">#&gt; 2     5   2    36     118  8.0   72</span>
+<span class="co">#&gt; 3     5   3    12     149 12.6   74</span>
+<span class="co">#&gt; 4     5   4    18     313 11.5   62</span>
+<span class="co">#&gt; 5     5   5    NA      NA 14.3   56</span>
+<span class="co">#&gt; 6     5   6    28      NA 14.9   66</span></code></pre></div>
+<p>不足的id.var 会出错，会把值的数量统计出来</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dcast</span>(aql, month ~<span class="st"> </span>variable)
+<span class="co">#&gt; Aggregation function missing: defaulting to length</span>
+<span class="co">#&gt;   month ozone solar.r wind temp</span>
+<span class="co">#&gt; 1     5    31      31   31   31</span>
+<span class="co">#&gt; 2     6    30      30   30   30</span>
+<span class="co">#&gt; 3     7    31      31   31   31</span>
+<span class="co">#&gt; 4     8    31      31   31   31</span>
+<span class="co">#&gt; 5     9    30      30   30   30</span></code></pre></div>
+<p><strong>fun,加上集合函数就能按正确方式集合了。</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dcast</span>(aql, month ~<span class="st"> </span>variable, <span class="dt">fun.aggregate =</span> mean,
+      <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt;   month    ozone  solar.r      wind     temp</span>
+<span class="co">#&gt; 1     5 23.61538 181.2963 11.622581 65.54839</span>
+<span class="co">#&gt; 2     6 29.44444 190.1667 10.266667 79.10000</span>
+<span class="co">#&gt; 3     7 59.11538 216.4839  8.941935 83.90323</span>
+<span class="co">#&gt; 4     8 59.96154 171.8571  8.793548 83.96774</span>
+<span class="co">#&gt; 5     9 31.44828 167.4333 10.180000 76.90000</span></code></pre></div>
+</div>
+<div id="tidyr" class="section level4">
+<h4><span class="header-section-number">0.8.0.2</span> tidyr</h4>
+<p>新建一列数据</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars$car &lt;-<span class="st"> </span><span class="kw">rownames</span>(mtcars)
+<span class="kw">colnames</span>(mtcars)
+<span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span>
+<span class="co">#&gt; [11] &quot;carb&quot; &quot;car&quot;</span>
+mtcars &lt;-<span class="st"> </span>mtcars[, <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>:<span class="dv">11</span>)]
+<span class="kw">head</span>(mtcars)
+<span class="co">#&gt;                                 car  mpg cyl disp  hp drat    wt  qsec vs</span>
+<span class="co">#&gt; Mazda RX4                 Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0</span>
+<span class="co">#&gt; Mazda RX4 Wag         Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0</span>
+<span class="co">#&gt; Datsun 710               Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1</span>
+<span class="co">#&gt; Hornet 4 Drive       Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1</span>
+<span class="co">#&gt; Hornet Sportabout Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0</span>
+<span class="co">#&gt; Valiant                     Valiant 18.1   6  225 105 2.76 3.460 20.22  1</span>
+<span class="co">#&gt;                   am gear carb</span>
+<span class="co">#&gt; Mazda RX4          1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag      1    4    4</span>
+<span class="co">#&gt; Datsun 710         1    4    1</span>
+<span class="co">#&gt; Hornet 4 Drive     0    3    1</span>
+<span class="co">#&gt; Hornet Sportabout  0    3    2</span>
+<span class="co">#&gt; Valiant            0    3    1</span></code></pre></div>
+<p><strong>gather 聚合</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+<span class="co">#&gt; Warning: package &#39;tidyr&#39; was built under R version 3.3.1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;tidyr&#39;</span>
+<span class="co">#&gt; The following object is masked from &#39;package:reshape2&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     smiths</span>
+mtcarsNew &lt;-<span class="st"> </span>mtcars %&gt;%
+<span class="st">  </span><span class="kw">gather</span>(attribute, value, -car) <span class="co">#不仅聚合，且命名了。</span>
+<span class="kw">head</span>(mtcarsNew)
+<span class="co">#&gt;                 car attribute value</span>
+<span class="co">#&gt; 1         Mazda RX4       mpg  21.0</span>
+<span class="co">#&gt; 2     Mazda RX4 Wag       mpg  21.0</span>
+<span class="co">#&gt; 3        Datsun 710       mpg  22.8</span>
+<span class="co">#&gt; 4    Hornet 4 Drive       mpg  21.4</span>
+<span class="co">#&gt; 5 Hornet Sportabout       mpg  18.7</span>
+<span class="co">#&gt; 6           Valiant       mpg  18.1</span>
+<span class="kw">tail</span>(mtcarsNew)
+<span class="co">#&gt;                car attribute value</span>
+<span class="co">#&gt; 347  Porsche 914-2      carb     2</span>
+<span class="co">#&gt; 348   Lotus Europa      carb     2</span>
+<span class="co">#&gt; 349 Ford Pantera L      carb     4</span>
+<span class="co">#&gt; 350   Ferrari Dino      carb     6</span>
+<span class="co">#&gt; 351  Maserati Bora      carb     8</span>
+<span class="co">#&gt; 352     Volvo 142E      carb     2</span></code></pre></div>
+<p>gather mpg:gear 之间的列</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcarsNew &lt;-<span class="st"> </span>mtcars %&gt;%
+<span class="st">  </span><span class="kw">gather</span>(attribute, value, mpg:gear)</code></pre></div>
+<p><strong>spread 铺开</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcarsWide &lt;-<span class="st"> </span>mtcarsNew %&gt;%
+<span class="st">  </span><span class="kw">spread</span>(attribute, value)
+<span class="kw">head</span>(mtcarsWide)
+<span class="co">#&gt;                  car carb am cyl disp drat gear  hp  mpg  qsec vs    wt</span>
+<span class="co">#&gt; 1        AMC Javelin    2  0   8  304 3.15    3 150 15.2 17.30  0 3.435</span>
+<span class="co">#&gt; 2 Cadillac Fleetwood    4  0   8  472 2.93    3 205 10.4 17.98  0 5.250</span>
+<span class="co">#&gt; 3         Camaro Z28    4  0   8  350 3.73    3 245 13.3 15.41  0 3.840</span>
+<span class="co">#&gt; 4  Chrysler Imperial    4  0   8  440 3.23    3 230 14.7 17.42  0 5.345</span>
+<span class="co">#&gt; 5         Datsun 710    1  1   4  108 3.85    4  93 22.8 18.61  1 2.320</span>
+<span class="co">#&gt; 6   Dodge Challenger    2  0   8  318 2.76    3 150 15.5 16.87  0 3.520</span></code></pre></div>
+<p><strong>unite 合并</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2016-06-01&#39;</span>) +<span class="st"> </span><span class="dv">0</span>:<span class="dv">14</span>
+
+hour &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">24</span>, <span class="dv">15</span>)
+min &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">60</span>, <span class="dv">15</span>)
+second &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">60</span>, <span class="dv">15</span>)
+event &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">15</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(date, hour, min, second, event)
+<span class="kw">head</span>(df)
+<span class="co">#&gt;         date hour min second event</span>
+<span class="co">#&gt; 1 2016-06-01    7  30     29     u</span>
+<span class="co">#&gt; 2 2016-06-02    9  43     36     a</span>
+<span class="co">#&gt; 3 2016-06-03   13  58     60     l</span>
+<span class="co">#&gt; 4 2016-06-04   20  22     11     q</span>
+<span class="co">#&gt; 5 2016-06-05    5  44     47     p</span>
+<span class="co">#&gt; 6 2016-06-06   18  52     37     k</span>
+
+df1 &lt;-<span class="st"> </span>df %&gt;%
+<span class="st">  </span><span class="kw">unite</span>(datehour, date, hour, <span class="dt">sep =</span> <span class="st">&#39; &#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">unite</span>(datetime, datehour, min, second, <span class="dt">sep =</span> <span class="st">&#39;:&#39;</span>)
+df1
+<span class="co">#&gt;               datetime event</span>
+<span class="co">#&gt; 1   2016-06-01 7:30:29     u</span>
+<span class="co">#&gt; 2   2016-06-02 9:43:36     a</span>
+<span class="co">#&gt; 3  2016-06-03 13:58:60     l</span>
+<span class="co">#&gt; 4  2016-06-04 20:22:11     q</span>
+<span class="co">#&gt; 5   2016-06-05 5:44:47     p</span>
+<span class="co">#&gt; 6  2016-06-06 18:52:37     k</span>
+<span class="co">#&gt; 7  2016-06-07 19:12:43     r</span>
+<span class="co">#&gt; 8   2016-06-08 12:35:6     i</span>
+<span class="co">#&gt; 9   2016-06-09 11:7:38     e</span>
+<span class="co">#&gt; 10  2016-06-10 1:14:21     b</span>
+<span class="co">#&gt; 11  2016-06-11 3:20:42     w</span>
+<span class="co">#&gt; 12  2016-06-12 14:1:32     t</span>
+<span class="co">#&gt; 13 2016-06-13 23:19:52     h</span>
+<span class="co">#&gt; 14 2016-06-14 21:41:26     s</span>
+<span class="co">#&gt; 15  2016-06-15 8:16:25     o</span></code></pre></div>
+<p><strong>separate 拆分</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span>df1 %&gt;%
+<span class="st">  </span><span class="kw">separate</span>(datetime, <span class="kw">c</span>(<span class="st">&#39;date&#39;</span>, <span class="st">&#39;time&#39;</span>), <span class="dt">sep =</span> <span class="st">&#39; &#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">separate</span>(time, <span class="kw">c</span>(<span class="st">&#39;hour&#39;</span>, <span class="st">&#39;min&#39;</span>, <span class="st">&#39;second&#39;</span>), <span class="dt">sep =</span> <span class="st">&#39;:&#39;</span>)
+df2
+<span class="co">#&gt;          date hour min second event</span>
+<span class="co">#&gt; 1  2016-06-01    7  30     29     u</span>
+<span class="co">#&gt; 2  2016-06-02    9  43     36     a</span>
+<span class="co">#&gt; 3  2016-06-03   13  58     60     l</span>
+<span class="co">#&gt; 4  2016-06-04   20  22     11     q</span>
+<span class="co">#&gt; 5  2016-06-05    5  44     47     p</span>
+<span class="co">#&gt; 6  2016-06-06   18  52     37     k</span>
+<span class="co">#&gt; 7  2016-06-07   19  12     43     r</span>
+<span class="co">#&gt; 8  2016-06-08   12  35      6     i</span>
+<span class="co">#&gt; 9  2016-06-09   11   7     38     e</span>
+<span class="co">#&gt; 10 2016-06-10    1  14     21     b</span>
+<span class="co">#&gt; 11 2016-06-11    3  20     42     w</span>
+<span class="co">#&gt; 12 2016-06-12   14   1     32     t</span>
+<span class="co">#&gt; 13 2016-06-13   23  19     52     h</span>
+<span class="co">#&gt; 14 2016-06-14   21  41     26     s</span>
+<span class="co">#&gt; 15 2016-06-15    8  16     25     o</span></code></pre></div>
+<p>总的来说，tidyr 包比reshape语法更为简洁易懂， 更加方便。</p>
+
+</div>
+</div>
+<div id="section-0.9" class="section level2">
+<h2><span class="header-section-number">0.9</span> 导入数据</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 用 readr 包把数据读取成 tbl 格式，省去转化的那一步。</span>
+<span class="kw">library</span>(dplyr)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span>
+<span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw">library</span>(readr)
+order &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;D://Nutstore/R/dplyr/dplyr-data/order.csv&#39;</span>)[-<span class="dv">1</span>] <span class="co"># 去除空名的第一列</span>
+order
+<span class="co">#&gt; Source: local data frame [100,000 x 11]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    orderid customerid campaignid  orderdate             city state zipcode</span>
+<span class="co">#&gt;      (int)      (int)      (int)     (date)            (chr) (chr)   (chr)</span>
+<span class="co">#&gt; 1  1002854      45978       2141 2009-10-13           NEWTON    MA   02459</span>
+<span class="co">#&gt; 2  1002855     125381       2173 2009-10-13     NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3  1002856     103122       2141 2011-06-02            MIAMI    FL   33137</span>
+<span class="co">#&gt; 4  1002857     130980       2173 2009-10-14     E RUTHERFORD    NJ   07073</span>
+<span class="co">#&gt; 5  1002886      48553       2141 2010-11-19        BALTIMORE    MD   21218</span>
+<span class="co">#&gt; 6  1002887     106150       2173 2009-10-15         ROWAYTON    CT   06853</span>
+<span class="co">#&gt; 7  1002888      27805       2173 2009-10-15     INDIANAPOLIS    IN   46240</span>
+<span class="co">#&gt; 8  1002889      24546       2173 2009-10-15    PLEASANTVILLE    NY   10570</span>
+<span class="co">#&gt; 9  1002890      43783       2173 2009-10-15 EAST STROUDSBURG    PA   18301</span>
+<span class="co">#&gt; 10 1003004      15688       2173 2009-10-15  ROUND LAKE PARK    IL   60073</span>
+<span class="co">#&gt; ..     ...        ...        ...        ...              ...   ...     ...</span>
+<span class="co">#&gt; Variables not shown: paymenttype (chr), totalprice (dbl), numorderlines</span>
+<span class="co">#&gt;   (int), numunits (int)</span></code></pre></div>
+</div>
+<div id="-filter" class="section level2">
+<h2><span class="header-section-number">0.10</span> 数据筛选 filter，返回满足条件的观测值</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 看 2009-10-15 日的数据</span>
+<span class="kw">filter</span>(order, orderdate ==<span class="st"> &#39;2009-10-13&#39;</span>)
+<span class="co">#&gt; Source: local data frame [19 x 11]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    orderid customerid campaignid  orderdate          city state zipcode</span>
+<span class="co">#&gt;      (int)      (int)      (int)     (date)         (chr) (chr)   (chr)</span>
+<span class="co">#&gt; 1  1002854      45978       2141 2009-10-13        NEWTON    MA   02459</span>
+<span class="co">#&gt; 2  1002855     125381       2173 2009-10-13  NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3  1002442     112970       2173 2009-10-13      BRANFORD    CT   06405</span>
+<span class="co">#&gt; 4  1002471     125377       2173 2009-10-13  VALLEY FORGE    PA   19482</span>
+<span class="co">#&gt; 5  1002472     133164       2173 2009-10-13    FORT WORTH    TX   76107</span>
+<span class="co">#&gt; 6  1003224     129708       2173 2009-10-13   CERRO GORDO    NC   28430</span>
+<span class="co">#&gt; 7  1003372     164007       2141 2009-10-13    LOUISVILLE    KY   40205</span>
+<span class="co">#&gt; 8  1003373      44085       2141 2009-10-13  CORAL GABLES    FL   33146</span>
+<span class="co">#&gt; 9  1003374     106995       2173 2009-10-13     BETHLEHEM    PA   18018</span>
+<span class="co">#&gt; 10 1003375     103991       2173 2009-10-13       WANTAGH    NY   11793</span>
+<span class="co">#&gt; 11 1003376     129752       2173 2009-10-13     LEWISBURG    PA   17837</span>
+<span class="co">#&gt; 12 1003377      46294       2173 2009-10-13      NEW YORK    NY   10128</span>
+<span class="co">#&gt; 13 1001597      49948       2173 2009-10-13    PISCATAWAY    NJ   08854</span>
+<span class="co">#&gt; 14 1002337     152447       2173 2009-10-13      BROOKLYN    NY   11238</span>
+<span class="co">#&gt; 15 1002338       7990       2173 2009-10-13      BROOKLYN    NY   11238</span>
+<span class="co">#&gt; 16 1002367       6986       2173 2009-10-13      RICHWOOD    NJ   07450</span>
+<span class="co">#&gt; 17 1002368     103129       2204 2009-10-13     WHITEHALL    PA   18052</span>
+<span class="co">#&gt; 18 1002619      93175       2173 2009-10-13 BASKING RIDGE    NJ   07920</span>
+<span class="co">#&gt; 19 1002853     106161       2173 2009-10-13     BROOKSIDE    NJ   07926</span>
+<span class="co">#&gt; Variables not shown: paymenttype (chr), totalprice (dbl), numorderlines</span>
+<span class="co">#&gt;   (int), numunits (int)</span>
+
+<span class="co"># 更细的筛选</span>
+<span class="kw">filter</span>(order, orderdate ==<span class="st"> &#39;2009-10-13&#39;</span> &amp;<span class="st"> </span>totalprice &gt;<span class="st"> </span><span class="dv">100</span>) -&gt;<span class="st"> </span>new_tbl
+new_tbl
+<span class="co">#&gt; Source: local data frame [1 x 11]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   orderid customerid campaignid  orderdate   city state zipcode</span>
+<span class="co">#&gt;     (int)      (int)      (int)     (date)  (chr) (chr)   (chr)</span>
+<span class="co">#&gt; 1 1002854      45978       2141 2009-10-13 NEWTON    MA   02459</span>
+<span class="co">#&gt; Variables not shown: paymenttype (chr), totalprice (dbl), numorderlines</span>
+<span class="co">#&gt;   (int), numunits (int)</span></code></pre></div>
+</div>
+<div id="-select" class="section level2">
+<h2><span class="header-section-number">0.11</span> 子集选取 select，只保留选择的变量</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 选取几个子集</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+<span class="kw">select</span>(order, city, numunits, zipcode)
+<span class="co">#&gt; Source: local data frame [100,000 x 3]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                city numunits zipcode</span>
+<span class="co">#&gt;               (chr)    (int)   (chr)</span>
+<span class="co">#&gt; 1            NEWTON        3   02459</span>
+<span class="co">#&gt; 2      NEW ROCHELLE        1   10804</span>
+<span class="co">#&gt; 3             MIAMI        2   33137</span>
+<span class="co">#&gt; 4      E RUTHERFORD        1   07073</span>
+<span class="co">#&gt; 5         BALTIMORE        1   21218</span>
+<span class="co">#&gt; 6          ROWAYTON        1   06853</span>
+<span class="co">#&gt; 7      INDIANAPOLIS        1   46240</span>
+<span class="co">#&gt; 8     PLEASANTVILLE        1   10570</span>
+<span class="co">#&gt; 9  EAST STROUDSBURG        2   18301</span>
+<span class="co">#&gt; 10  ROUND LAKE PARK        1   60073</span>
+<span class="co">#&gt; ..              ...      ...     ...</span>
+
+<span class="co"># 换名, 提取选择的数据列</span>
+<span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="co">#&gt; Source: local data frame [100,000 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;          date  price</span>
+<span class="co">#&gt;        (date)  (dbl)</span>
+<span class="co">#&gt; 1  2009-10-13 190.00</span>
+<span class="co">#&gt; 2  2009-10-13  10.00</span>
+<span class="co">#&gt; 3  2011-06-02  35.22</span>
+<span class="co">#&gt; 4  2009-10-14  10.00</span>
+<span class="co">#&gt; 5  2010-11-19  10.00</span>
+<span class="co">#&gt; 6  2009-10-15  10.00</span>
+<span class="co">#&gt; 7  2009-10-15  10.00</span>
+<span class="co">#&gt; 8  2009-10-15  10.00</span>
+<span class="co">#&gt; 9  2009-10-15  29.68</span>
+<span class="co">#&gt; 10 2009-10-15  19.68</span>
+<span class="co">#&gt; ..        ...    ...</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+
+<span class="co"># rename,换名，提取所有列</span>
+<span class="kw">rename</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="co">#&gt; Source: local data frame [100,000 x 11]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    orderid customerid campaignid       date             city state zipcode</span>
+<span class="co">#&gt;      (int)      (int)      (int)     (date)            (chr) (chr)   (chr)</span>
+<span class="co">#&gt; 1  1002854      45978       2141 2009-10-13           NEWTON    MA   02459</span>
+<span class="co">#&gt; 2  1002855     125381       2173 2009-10-13     NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3  1002856     103122       2141 2011-06-02            MIAMI    FL   33137</span>
+<span class="co">#&gt; 4  1002857     130980       2173 2009-10-14     E RUTHERFORD    NJ   07073</span>
+<span class="co">#&gt; 5  1002886      48553       2141 2010-11-19        BALTIMORE    MD   21218</span>
+<span class="co">#&gt; 6  1002887     106150       2173 2009-10-15         ROWAYTON    CT   06853</span>
+<span class="co">#&gt; 7  1002888      27805       2173 2009-10-15     INDIANAPOLIS    IN   46240</span>
+<span class="co">#&gt; 8  1002889      24546       2173 2009-10-15    PLEASANTVILLE    NY   10570</span>
+<span class="co">#&gt; 9  1002890      43783       2173 2009-10-15 EAST STROUDSBURG    PA   18301</span>
+<span class="co">#&gt; 10 1003004      15688       2173 2009-10-15  ROUND LAKE PARK    IL   60073</span>
+<span class="co">#&gt; ..     ...        ...        ...        ...              ...   ...     ...</span>
+<span class="co">#&gt; Variables not shown: paymenttype (chr), price (dbl), numorderlines (int),</span>
+<span class="co">#&gt;   numunits (int)</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+
+<span class="co"># 选取以 order 开始的变量</span>
+<span class="kw">select</span>(order, <span class="kw">starts_with</span>(<span class="st">&#39;order&#39;</span>))
+<span class="co">#&gt; Source: local data frame [100,000 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    orderid  orderdate</span>
+<span class="co">#&gt;      (int)     (date)</span>
+<span class="co">#&gt; 1  1002854 2009-10-13</span>
+<span class="co">#&gt; 2  1002855 2009-10-13</span>
+<span class="co">#&gt; 3  1002856 2011-06-02</span>
+<span class="co">#&gt; 4  1002857 2009-10-14</span>
+<span class="co">#&gt; 5  1002886 2010-11-19</span>
+<span class="co">#&gt; 6  1002887 2009-10-15</span>
+<span class="co">#&gt; 7  1002888 2009-10-15</span>
+<span class="co">#&gt; 8  1002889 2009-10-15</span>
+<span class="co">#&gt; 9  1002890 2009-10-15</span>
+<span class="co">#&gt; 10 1003004 2009-10-15</span>
+<span class="co">#&gt; ..     ...        ...</span>
+
+<span class="co"># 选取包含id 的变量</span>
+<span class="kw">select</span>(order, <span class="kw">contains</span>(<span class="st">&#39;id&#39;</span>))
+<span class="co">#&gt; Source: local data frame [100,000 x 3]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    orderid customerid campaignid</span>
+<span class="co">#&gt;      (int)      (int)      (int)</span>
+<span class="co">#&gt; 1  1002854      45978       2141</span>
+<span class="co">#&gt; 2  1002855     125381       2173</span>
+<span class="co">#&gt; 3  1002856     103122       2141</span>
+<span class="co">#&gt; 4  1002857     130980       2173</span>
+<span class="co">#&gt; 5  1002886      48553       2141</span>
+<span class="co">#&gt; 6  1002887     106150       2173</span>
+<span class="co">#&gt; 7  1002888      27805       2173</span>
+<span class="co">#&gt; 8  1002889      24546       2173</span>
+<span class="co">#&gt; 9  1002890      43783       2173</span>
+<span class="co">#&gt; 10 1003004      15688       2173</span>
+<span class="co">#&gt; ..     ...        ...        ...</span></code></pre></div>
+</div>
+<div id="-arrange" class="section level2">
+<h2><span class="header-section-number">0.12</span> 数据排序 arrange</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="kw">arrange</span>(tbl, date, <span class="kw">desc</span>(price))
+<span class="co">#&gt; Source: local data frame [100,000 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;          date price</span>
+<span class="co">#&gt;        (date) (dbl)</span>
+<span class="co">#&gt; 1  2009-10-04   200</span>
+<span class="co">#&gt; 2  2009-10-04   120</span>
+<span class="co">#&gt; 3  2009-10-04   100</span>
+<span class="co">#&gt; 4  2009-10-04   100</span>
+<span class="co">#&gt; 5  2009-10-04    70</span>
+<span class="co">#&gt; 6  2009-10-04    50</span>
+<span class="co">#&gt; 7  2009-10-04    50</span>
+<span class="co">#&gt; 8  2009-10-04    40</span>
+<span class="co">#&gt; 9  2009-10-04    40</span>
+<span class="co">#&gt; 10 2009-10-04    40</span>
+<span class="co">#&gt; ..        ...   ...</span>
+
+<span class="co"># 管道操作，更简便</span>
+tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(date, <span class="kw">desc</span>(price))
+tbl
+<span class="co">#&gt; Source: local data frame [100,000 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;          date price</span>
+<span class="co">#&gt;        (date) (dbl)</span>
+<span class="co">#&gt; 1  2009-10-04   200</span>
+<span class="co">#&gt; 2  2009-10-04   120</span>
+<span class="co">#&gt; 3  2009-10-04   100</span>
+<span class="co">#&gt; 4  2009-10-04   100</span>
+<span class="co">#&gt; 5  2009-10-04    70</span>
+<span class="co">#&gt; 6  2009-10-04    50</span>
+<span class="co">#&gt; 7  2009-10-04    50</span>
+<span class="co">#&gt; 8  2009-10-04    40</span>
+<span class="co">#&gt; 9  2009-10-04    40</span>
+<span class="co">#&gt; 10 2009-10-04    40</span>
+<span class="co">#&gt; ..        ...   ...</span></code></pre></div>
+</div>
+<div id="-mutate" class="section level2">
+<h2><span class="header-section-number">0.13</span> 数据扩展 mutate</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(date,<span class="kw">desc</span>(price)) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">substr</span>(date,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">month =</span> <span class="kw">substr</span>(date,<span class="dv">6</span>,<span class="dv">7</span>), 
+       <span class="dt">day =</span> <span class="kw">substr</span>(date,<span class="dv">9</span>,<span class="dv">10</span>))
+tbl
+<span class="co">#&gt; Source: local data frame [100,000 x 5]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;          date price  year month   day</span>
+<span class="co">#&gt;        (date) (dbl) (chr) (chr) (chr)</span>
+<span class="co">#&gt; 1  2009-10-04   200  2009    10    04</span>
+<span class="co">#&gt; 2  2009-10-04   120  2009    10    04</span>
+<span class="co">#&gt; 3  2009-10-04   100  2009    10    04</span>
+<span class="co">#&gt; 4  2009-10-04   100  2009    10    04</span>
+<span class="co">#&gt; 5  2009-10-04    70  2009    10    04</span>
+<span class="co">#&gt; 6  2009-10-04    50  2009    10    04</span>
+<span class="co">#&gt; 7  2009-10-04    50  2009    10    04</span>
+<span class="co">#&gt; 8  2009-10-04    40  2009    10    04</span>
+<span class="co">#&gt; 9  2009-10-04    40  2009    10    04</span>
+<span class="co">#&gt; 10 2009-10-04    40  2009    10    04</span>
+<span class="co">#&gt; ..        ...   ...   ...   ...   ...</span>
+<span class="co"># transmute 则会删除原有的变量，如同 select 与 rename</span></code></pre></div>
+</div>
+<div id="-summarise" class="section level2">
+<h2><span class="header-section-number">0.14</span> 数据汇总 summarise</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(tbl, <span class="dt">max =</span> <span class="kw">max</span>(price),
+          <span class="dt">min =</span> <span class="kw">min</span>(price),
+          <span class="kw">mean</span>(price))
+<span class="co">#&gt; Source: local data frame [1 x 3]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     max   min mean(price)</span>
+<span class="co">#&gt;   (dbl) (dbl)       (dbl)</span>
+<span class="co">#&gt; 1  6780     0    60.77773</span>
+
+<span class="kw">summarise</span>(tbl, <span class="dt">fisrt =</span> <span class="kw">first</span>(date),
+          <span class="dt">last =</span> <span class="kw">last</span>(date))
+<span class="co">#&gt; Source: local data frame [1 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;        fisrt       last</span>
+<span class="co">#&gt;       (date)     (date)</span>
+<span class="co">#&gt; 1 2009-10-04 2014-05-29</span>
+
+<span class="co"># 管道操作</span>
+df &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">price_sum =</span> <span class="kw">sum</span>(price), <span class="dt">price_mean =</span> <span class="kw">mean</span>(price))
+df
+<span class="co">#&gt; Source: local data frame [1 x 2]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   price_sum price_mean</span>
+<span class="co">#&gt;       (dbl)      (dbl)</span>
+<span class="co">#&gt; 1   6077773   60.77773</span></code></pre></div>
+</div>
+<div id="-join" class="section level2">
+<h2><span class="header-section-number">0.15</span> 数据连接 join</h2>
+<ul>
+<li>left_join 以左边为主，且保留所有值，用的最多，b 表追加在后面</li>
+<li>inner_join 只保留匹配的</li>
+<li>semi_join 只匹配左边的列</li>
+<li>anti_join 与上面函数相反</li>
+</ul>
+</div>
+<div id="-group_by" class="section level2">
+<h2><span class="header-section-number">0.16</span> 分组汇总 group_by</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">substr</span>(date,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">month =</span> <span class="kw">substr</span>(date,<span class="dv">6</span>,<span class="dv">7</span>), 
+         <span class="dt">day =</span> <span class="kw">substr</span>(date,<span class="dv">9</span>,<span class="dv">10</span>))
+
+by_year &lt;-<span class="st"> </span><span class="kw">group_by</span>(tbl, year) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(price), <span class="kw">sum</span>(price), <span class="kw">max</span>(month))
+
+by_year
+<span class="co">#&gt; Source: local data frame [6 x 4]</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    year mean(price) sum(price) max(month)</span>
+<span class="co">#&gt;   (chr)       (dbl)      (dbl)      (chr)</span>
+<span class="co">#&gt; 1  2009    34.13850   262627.5         12</span>
+<span class="co">#&gt; 2  2010    52.23982   967429.2         12</span>
+<span class="co">#&gt; 3  2011    51.35342  1380636.6         12</span>
+<span class="co">#&gt; 4  2012    68.40990  1404113.1         12</span>
+<span class="co">#&gt; 5  2013    76.71011  1633004.8         12</span>
+<span class="co">#&gt; 6  2014    84.47190   429962.0         05</span>
+
+order_year &lt;-<span class="st"> </span><span class="kw">group_by</span>(tbl, year)</code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
