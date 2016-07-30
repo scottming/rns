@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R notes while learning R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R notes while learning R">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R notes while learning R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R notes while learning R" />
+  
+  
+  
+
+<meta name="author" content="Scott Ming">
+
+<meta name="date" content="2016-07-30">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="section-2.html">
+<link rel="next" href="dplyr.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="r4ds.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R for Data Science</a></strong></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>Base</b></span></li>
+<li class="chapter" data-level="1" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>1</b> R 数据结构</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-.html"><a href="r-.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 向量</a></li>
+<li class="chapter" data-level="1.2" data-path="r-.html"><a href="r-.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 矩阵</a></li>
+<li class="chapter" data-level="1.3" data-path="r-.html"><a href="r-.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 数据框</a></li>
+<li class="chapter" data-level="1.4" data-path="r-.html"><a href="r-.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 列表</a></li>
+<li class="chapter" data-level="1.5" data-path="r-.html"><a href="r-.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 特殊对象</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>2</b> 数据读取与输出</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-2.html"><a href="section-2.html#-read.table"><i class="fa fa-check"></i><b>2.1</b> 读取 read.table</a></li>
+<li class="chapter" data-level="2.2" data-path="section-2.html"><a href="section-2.html#-readr"><i class="fa fa-check"></i><b>2.2</b> 高阶包 readr</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="-apply-.html"><a href="-apply-.html"><i class="fa fa-check"></i><b>3</b> 向量化操作之 apply 家族</a><ul>
+<li class="chapter" data-level="3.1" data-path="-apply-.html"><a href="-apply-.html#-lapplysapply"><i class="fa fa-check"></i><b>3.1</b> 循环迭代之 lapply/sapply</a></li>
+<li class="chapter" data-level="3.2" data-path="-apply-.html"><a href="-apply-.html#section-3.2"><i class="fa fa-check"></i><b>3.2</b> 分组运算</a></li>
+<li class="chapter" data-level="3.3" data-path="-apply-.html"><a href="-apply-.html#section-3.3"><i class="fa fa-check"></i><b>3.3</b> 多参数运算</a></li>
+</ul></li>
+<li class="part"><span><b>Explore</b></span></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> dplyr</a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 导入数据</a></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#-filter"><i class="fa fa-check"></i><b>4.2</b> 数据筛选 filter，返回满足条件的观测值</a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#-select"><i class="fa fa-check"></i><b>4.3</b> 子集选取 select，只保留选择的变量</a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#-arrange"><i class="fa fa-check"></i><b>4.4</b> 数据排序 arrange</a></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#-mutate"><i class="fa fa-check"></i><b>4.5</b> 数据扩展 mutate</a></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#-summarise"><i class="fa fa-check"></i><b>4.6</b> 数据汇总 summarise</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#-join"><i class="fa fa-check"></i><b>4.7</b> 数据连接 join</a></li>
+<li class="chapter" data-level="4.8" data-path="dplyr.html"><a href="dplyr.html#-group_by"><i class="fa fa-check"></i><b>4.8</b> 分组汇总 group_by</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R notes while learning R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="-apply-" class="section level1">
+<h1><span class="header-section-number">3</span> 向量化操作之 apply 家族</h1>
+<ul>
+<li>参考1：<a href="http://blog.fens.me/r-apply/">掌握R语言中的apply函数族</a></li>
+<li>参考2：<a href="http://stackoverflow.com/questions/3505701/r-grouping-functions-sapply-vs-lapply-vs-apply-vs-tapply-vs-by-vs-aggrega">R Grouping functions: sapply vs. lapply vs. apply. vs. tapply vs. by vs. aggregate</a></li>
+<li>参考3：<a href="http://www.xueqing.tv/cms/article/158">R语言apply家族函数的用法及其比较</a></li>
+</ul>
+<div id="-lapplysapply" class="section level2">
+<h2><span class="header-section-number">3.1</span> 循环迭代之 lapply/sapply</h2>
+<p><strong>sapply，lapply 的简化版</strong></p>
+<p>第一参数是 X，官方解释说，可接收向量，list，或表达式对象，其他对象将被强制按 list，第二个参数则是函数，返回一个向量或矩阵。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">func &lt;-<span class="st"> </span>function(x){
+  if (x %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span>){
+    ret &lt;-<span class="st"> &#39;even&#39;</span>
+  }
+  else {
+    ret &lt;-<span class="st"> &#39;odd&#39;</span>
+  }
+  <span class="kw">return</span>(ret)
+}
+vec &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">4</span>)*<span class="dv">100</span>)
+<span class="kw">func</span>(vec)
+<span class="co">#&gt; Warning in if (x%%2 == 0) {: the condition has length &gt; 1 and only the</span>
+<span class="co">#&gt; first element will be used</span>
+<span class="co">#&gt; [1] &quot;even&quot;</span>
+vec
+<span class="co">#&gt; [1]  8 83 60 16</span>
+<span class="kw">sapply</span>(vec, func)
+<span class="co">#&gt; [1] &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;even&quot;</span></code></pre></div>
+<p><strong>lapply</strong></p>
+<p>跟 sapply 的区别在于返回的是列表</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(vec, func)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] &quot;even&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] &quot;odd&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] &quot;even&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] &quot;even&quot;</span>
+mylist &lt;-<span class="st"> </span><span class="kw">as.list</span>(iris[, <span class="dv">1</span>:<span class="dv">4</span>]) <span class="co"># 不转list，也是强按</span>
+yourdata &lt;-<span class="st"> </span>iris[, <span class="dv">1</span>:<span class="dv">4</span>]
+
+<span class="kw">sapply</span>(mylist, mean) <span class="co"># 还可以对列表进行计算</span>
+<span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span>
+<span class="co">#&gt;         5.84         3.06         3.76         1.20</span>
+<span class="kw">lapply</span>(mylist, mean) <span class="co"># return a list</span>
+<span class="co">#&gt; $Sepal.Length</span>
+<span class="co">#&gt; [1] 5.84</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Sepal.Width</span>
+<span class="co">#&gt; [1] 3.06</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Length</span>
+<span class="co">#&gt; [1] 3.76</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Width</span>
+<span class="co">#&gt; [1] 1.2</span>
+
+myfunc &lt;-<span class="st"> </span>function(x) {
+  ret &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(x),<span class="kw">sd</span>(x))
+  <span class="kw">return</span>(ret)
+}
+result &lt;-<span class="st"> </span><span class="kw">lapply</span>(mylist, myfunc)
+result
+<span class="co">#&gt; $Sepal.Length</span>
+<span class="co">#&gt; [1] 5.843 0.828</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Sepal.Width</span>
+<span class="co">#&gt; [1] 3.057 0.436</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Length</span>
+<span class="co">#&gt; [1] 3.76 1.77</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Petal.Width</span>
+<span class="co">#&gt; [1] 1.199 0.762</span>
+
+<span class="kw">t</span>(<span class="kw">sapply</span>(result, <span class="st">&#39;[&#39;</span>)) <span class="co"># list数据转 data.frame</span>
+<span class="co">#&gt;              [,1]  [,2]</span>
+<span class="co">#&gt; Sepal.Length 5.84 0.828</span>
+<span class="co">#&gt; Sepal.Width  3.06 0.436</span>
+<span class="co">#&gt; Petal.Length 3.76 1.765</span>
+<span class="co">#&gt; Petal.Width  1.20 0.762</span></code></pre></div>
+</div>
+<div id="section-3.2" class="section level2">
+<h2><span class="header-section-number">3.2</span> 分组运算</h2>
+<p><strong>apply</strong></p>
+<p>第一个参数接收数组或矩阵，MARGIN 参数按行或列计算</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+vec &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">12</span>)*<span class="dv">100</span>)
+mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)
+<span class="kw">apply</span>(mat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, sum) <span class="co"># 1为行，2为列</span>
+<span class="co">#&gt; [1] 218 144 228</span></code></pre></div>
+<p><strong>tapply</strong></p>
+<p>tapply用于分组的循环计算，通过INDEX参数可以把数据集X进行分组，相当于group by的操作。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)
+<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span>
+<span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span>
+<span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span>
+<span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span>
+<span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span>
+<span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span>
+<span class="kw">with</span>(iris, <span class="kw">tapply</span>(Sepal.Length, <span class="kw">list</span>(Species), mean))
+<span class="co">#&gt;     setosa versicolor  virginica </span>
+<span class="co">#&gt;       5.01       5.94       6.59</span></code></pre></div>
+<p><strong>aggregate</strong></p>
+<p>比较友好，返回的是数据框</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris$Sepal.Length, <span class="kw">list</span>(iris$Species), mean)
+<span class="co">#&gt;      Group.1    x</span>
+<span class="co">#&gt; 1     setosa 5.01</span>
+<span class="co">#&gt; 2 versicolor 5.94</span>
+<span class="co">#&gt; 3  virginica 6.59</span></code></pre></div>
+</div>
+<div id="section-3.3" class="section level2">
+<h2><span class="header-section-number">3.3</span> 多参数运算</h2>
+<p><strong>mapply</strong></p>
+<p>这个函数目前理解的还不是很透彻，待补。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapply</span>(rep, <span class="dt">times =</span> <span class="dv">1</span>:<span class="dv">4</span>, <span class="dt">x =</span> <span class="dv">4</span>:<span class="dv">1</span>)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 3 3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 2 2 2</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] 1 1 1 1</span></code></pre></div>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dplyr.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hadley/r4ds/edit/master/apply_family.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

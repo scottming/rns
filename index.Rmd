@@ -1,7 +1,7 @@
 ---
-title: "R notes while learning R"
+title: "学 R 笔记"
 author: "Scott Ming"
-date: "2016年7月30日"
+date: "2016-07-30"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
 ---

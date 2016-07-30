@@ -1,0 +1,15 @@
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><strong><a href="./">R notes while learning R</a></strong></li>
+    edit:
+      link: https://github.com/scottming/rns
+      text: "Edit"
+    sharing: no
+  css: r4ds.css
+
+bookdown::pdf_book:
+  latex_engine: "xelatex"
+

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学 R 笔记</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="学 R 笔记">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学 R 笔记" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学 R 笔记" />
+  
+  
+  
+
+<meta name="author" content="Scott Ming">
+
+<meta name="date" content="2016-07-30">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="apply-.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="r4ds.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R notes while learning R</a></strong></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>Base</b></span></li>
+<li class="chapter" data-level="1" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>1</b> R 数据结构</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-.html"><a href="r-.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 向量</a></li>
+<li class="chapter" data-level="1.2" data-path="r-.html"><a href="r-.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 矩阵</a></li>
+<li class="chapter" data-level="1.3" data-path="r-.html"><a href="r-.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 数据框</a></li>
+<li class="chapter" data-level="1.4" data-path="r-.html"><a href="r-.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 列表</a></li>
+<li class="chapter" data-level="1.5" data-path="r-.html"><a href="r-.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 特殊对象</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>2</b> 数据读取与输出</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-2.html"><a href="section-2.html#-read.table"><i class="fa fa-check"></i><b>2.1</b> 读取 read.table</a></li>
+<li class="chapter" data-level="2.2" data-path="section-2.html"><a href="section-2.html#-readr"><i class="fa fa-check"></i><b>2.2</b> 高阶包 readr</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="apply-.html"><a href="apply-.html"><i class="fa fa-check"></i><b>3</b> apply 家族</a><ul>
+<li class="chapter" data-level="3.1" data-path="apply-.html"><a href="apply-.html#-lapplysapply"><i class="fa fa-check"></i><b>3.1</b> 循环迭代之 lapply/sapply</a></li>
+<li class="chapter" data-level="3.2" data-path="apply-.html"><a href="apply-.html#section-3.2"><i class="fa fa-check"></i><b>3.2</b> 分组运算</a></li>
+<li class="chapter" data-level="3.3" data-path="apply-.html"><a href="apply-.html#section-3.3"><i class="fa fa-check"></i><b>3.3</b> 多参数运算</a></li>
+</ul></li>
+<li class="part"><span><b>Explore</b></span></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> dplyr</a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 导入数据</a></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#-filter"><i class="fa fa-check"></i><b>4.2</b> 数据筛选 filter，返回满足条件的观测值</a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#-select"><i class="fa fa-check"></i><b>4.3</b> 子集选取 select，只保留选择的变量</a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#-arrange"><i class="fa fa-check"></i><b>4.4</b> 数据排序 arrange</a></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#-mutate"><i class="fa fa-check"></i><b>4.5</b> 数据扩展 mutate</a></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#-summarise"><i class="fa fa-check"></i><b>4.6</b> 数据汇总 summarise</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#-join"><i class="fa fa-check"></i><b>4.7</b> 数据连接 join</a></li>
+<li class="chapter" data-level="4.8" data-path="dplyr.html"><a href="dplyr.html#-group_by"><i class="fa fa-check"></i><b>4.8</b> 分组汇总 group_by</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学 R 笔记</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dplyr" class="section level1">
+<h1><span class="header-section-number">4</span> dplyr</h1>
+<div id="section-4.1" class="section level2">
+<h2><span class="header-section-number">4.1</span> 导入数据</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 用 readr 包把数据读取成 tbl 格式，省去转化的那一步。</span>
+<span class="kw">library</span>(dplyr)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span>
+<span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw">library</span>(readr)
+order &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;~/Nutstore/R/dplyr/dplyr-data/order.csv&#39;</span>)[-<span class="dv">1</span>] <span class="co"># 去除空名的第一列</span>
+<span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span>
+<span class="co">#&gt; Parsed with column specification:</span>
+<span class="co">#&gt; cols(</span>
+<span class="co">#&gt;   X1 = col_integer(),</span>
+<span class="co">#&gt;   orderid = col_integer(),</span>
+<span class="co">#&gt;   customerid = col_integer(),</span>
+<span class="co">#&gt;   campaignid = col_integer(),</span>
+<span class="co">#&gt;   orderdate = col_date(format = &quot;&quot;),</span>
+<span class="co">#&gt;   city = col_character(),</span>
+<span class="co">#&gt;   state = col_character(),</span>
+<span class="co">#&gt;   zipcode = col_character(),</span>
+<span class="co">#&gt;   paymenttype = col_character(),</span>
+<span class="co">#&gt;   totalprice = col_double(),</span>
+<span class="co">#&gt;   numorderlines = col_integer(),</span>
+<span class="co">#&gt;   numunits = col_integer()</span>
+<span class="co">#&gt; )</span>
+order
+<span class="co">#&gt; # A tibble: 100,000 x 11</span>
+<span class="co">#&gt;   orderid customerid campaignid  orderdate         city state zipcode</span>
+<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;date&gt;        &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 1002854      45978       2141 2009-10-13       NEWTON    MA   02459</span>
+<span class="co">#&gt; 2 1002855     125381       2173 2009-10-13 NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3 1002856     103122       2141 2011-06-02        MIAMI    FL   33137</span>
+<span class="co">#&gt; 4 1002857     130980       2173 2009-10-14 E RUTHERFORD    NJ   07073</span>
+<span class="co">#&gt; 5 1002886      48553       2141 2010-11-19    BALTIMORE    MD   21218</span>
+<span class="co">#&gt; 6 1002887     106150       2173 2009-10-15     ROWAYTON    CT   06853</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows, and 4 more variables: paymenttype &lt;chr&gt;,</span>
+<span class="co">#&gt; #   totalprice &lt;dbl&gt;, numorderlines &lt;int&gt;, numunits &lt;int&gt;</span></code></pre></div>
+</div>
+<div id="-filter" class="section level2">
+<h2><span class="header-section-number">4.2</span> 数据筛选 filter，返回满足条件的观测值</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 看 2009-10-15 日的数据</span>
+<span class="kw">filter</span>(order, orderdate ==<span class="st"> &#39;2009-10-13&#39;</span>)
+<span class="co">#&gt; # A tibble: 19 x 11</span>
+<span class="co">#&gt;   orderid customerid campaignid  orderdate         city state zipcode</span>
+<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;date&gt;        &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 1002854      45978       2141 2009-10-13       NEWTON    MA   02459</span>
+<span class="co">#&gt; 2 1002855     125381       2173 2009-10-13 NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3 1002442     112970       2173 2009-10-13     BRANFORD    CT   06405</span>
+<span class="co">#&gt; 4 1002471     125377       2173 2009-10-13 VALLEY FORGE    PA   19482</span>
+<span class="co">#&gt; 5 1002472     133164       2173 2009-10-13   FORT WORTH    TX   76107</span>
+<span class="co">#&gt; 6 1003224     129708       2173 2009-10-13  CERRO GORDO    NC   28430</span>
+<span class="co">#&gt; # ... with 13 more rows, and 4 more variables: paymenttype &lt;chr&gt;,</span>
+<span class="co">#&gt; #   totalprice &lt;dbl&gt;, numorderlines &lt;int&gt;, numunits &lt;int&gt;</span>
+
+<span class="co"># 更细的筛选</span>
+<span class="kw">filter</span>(order, orderdate ==<span class="st"> &#39;2009-10-13&#39;</span> &amp;<span class="st"> </span>totalprice &gt;<span class="st"> </span><span class="dv">100</span>) -&gt;<span class="st"> </span>new_tbl
+new_tbl
+<span class="co">#&gt; # A tibble: 1 x 11</span>
+<span class="co">#&gt;   orderid customerid campaignid  orderdate   city state zipcode</span>
+<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;date&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 1002854      45978       2141 2009-10-13 NEWTON    MA   02459</span>
+<span class="co">#&gt; # ... with 4 more variables: paymenttype &lt;chr&gt;, totalprice &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   numorderlines &lt;int&gt;, numunits &lt;int&gt;</span></code></pre></div>
+</div>
+<div id="-select" class="section level2">
+<h2><span class="header-section-number">4.3</span> 子集选取 select，只保留选择的变量</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 选取几个子集</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+<span class="kw">select</span>(order, city, numunits, zipcode)
+<span class="co">#&gt; # A tibble: 100,000 x 3</span>
+<span class="co">#&gt;           city numunits zipcode</span>
+<span class="co">#&gt;          &lt;chr&gt;    &lt;int&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1       NEWTON        3   02459</span>
+<span class="co">#&gt; 2 NEW ROCHELLE        1   10804</span>
+<span class="co">#&gt; 3        MIAMI        2   33137</span>
+<span class="co">#&gt; 4 E RUTHERFORD        1   07073</span>
+<span class="co">#&gt; 5    BALTIMORE        1   21218</span>
+<span class="co">#&gt; 6     ROWAYTON        1   06853</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span>
+
+<span class="co"># 换名, 提取选择的数据列</span>
+<span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="co">#&gt; # A tibble: 100,000 x 2</span>
+<span class="co">#&gt;         date price</span>
+<span class="co">#&gt;       &lt;date&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 2009-10-13 190.0</span>
+<span class="co">#&gt; 2 2009-10-13  10.0</span>
+<span class="co">#&gt; 3 2011-06-02  35.2</span>
+<span class="co">#&gt; 4 2009-10-14  10.0</span>
+<span class="co">#&gt; 5 2010-11-19  10.0</span>
+<span class="co">#&gt; 6 2009-10-15  10.0</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+
+<span class="co"># rename,换名，提取所有列</span>
+<span class="kw">rename</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="co">#&gt; # A tibble: 100,000 x 11</span>
+<span class="co">#&gt;   orderid customerid campaignid       date         city state zipcode</span>
+<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;date&gt;        &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 1002854      45978       2141 2009-10-13       NEWTON    MA   02459</span>
+<span class="co">#&gt; 2 1002855     125381       2173 2009-10-13 NEW ROCHELLE    NY   10804</span>
+<span class="co">#&gt; 3 1002856     103122       2141 2011-06-02        MIAMI    FL   33137</span>
+<span class="co">#&gt; 4 1002857     130980       2173 2009-10-14 E RUTHERFORD    NJ   07073</span>
+<span class="co">#&gt; 5 1002886      48553       2141 2010-11-19    BALTIMORE    MD   21218</span>
+<span class="co">#&gt; 6 1002887     106150       2173 2009-10-15     ROWAYTON    CT   06853</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows, and 4 more variables: paymenttype &lt;chr&gt;,</span>
+<span class="co">#&gt; #   price &lt;dbl&gt;, numorderlines &lt;int&gt;, numunits &lt;int&gt;</span>
+<span class="kw">names</span>(order)
+<span class="co">#&gt;  [1] &quot;orderid&quot;       &quot;customerid&quot;    &quot;campaignid&quot;    &quot;orderdate&quot;    </span>
+<span class="co">#&gt;  [5] &quot;city&quot;          &quot;state&quot;         &quot;zipcode&quot;       &quot;paymenttype&quot;  </span>
+<span class="co">#&gt;  [9] &quot;totalprice&quot;    &quot;numorderlines&quot; &quot;numunits&quot;</span>
+
+<span class="co"># 选取以 order 开始的变量</span>
+<span class="kw">select</span>(order, <span class="kw">starts_with</span>(<span class="st">&#39;order&#39;</span>))
+<span class="co">#&gt; # A tibble: 100,000 x 2</span>
+<span class="co">#&gt;   orderid  orderdate</span>
+<span class="co">#&gt;     &lt;int&gt;     &lt;date&gt;</span>
+<span class="co">#&gt; 1 1002854 2009-10-13</span>
+<span class="co">#&gt; 2 1002855 2009-10-13</span>
+<span class="co">#&gt; 3 1002856 2011-06-02</span>
+<span class="co">#&gt; 4 1002857 2009-10-14</span>
+<span class="co">#&gt; 5 1002886 2010-11-19</span>
+<span class="co">#&gt; 6 1002887 2009-10-15</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span>
+
+<span class="co"># 选取包含id 的变量</span>
+<span class="kw">select</span>(order, <span class="kw">contains</span>(<span class="st">&#39;id&#39;</span>))
+<span class="co">#&gt; # A tibble: 100,000 x 3</span>
+<span class="co">#&gt;   orderid customerid campaignid</span>
+<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt;      &lt;int&gt;</span>
+<span class="co">#&gt; 1 1002854      45978       2141</span>
+<span class="co">#&gt; 2 1002855     125381       2173</span>
+<span class="co">#&gt; 3 1002856     103122       2141</span>
+<span class="co">#&gt; 4 1002857     130980       2173</span>
+<span class="co">#&gt; 5 1002886      48553       2141</span>
+<span class="co">#&gt; 6 1002887     106150       2173</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span></code></pre></div>
+</div>
+<div id="-arrange" class="section level2">
+<h2><span class="header-section-number">4.4</span> 数据排序 arrange</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice)
+<span class="kw">arrange</span>(tbl, date, <span class="kw">desc</span>(price))
+<span class="co">#&gt; # A tibble: 100,000 x 2</span>
+<span class="co">#&gt;         date price</span>
+<span class="co">#&gt;       &lt;date&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 2009-10-04   200</span>
+<span class="co">#&gt; 2 2009-10-04   120</span>
+<span class="co">#&gt; 3 2009-10-04   100</span>
+<span class="co">#&gt; 4 2009-10-04   100</span>
+<span class="co">#&gt; 5 2009-10-04    70</span>
+<span class="co">#&gt; 6 2009-10-04    50</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span>
+
+<span class="co"># 管道操作，更简便</span>
+tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(date, <span class="kw">desc</span>(price))
+tbl
+<span class="co">#&gt; # A tibble: 100,000 x 2</span>
+<span class="co">#&gt;         date price</span>
+<span class="co">#&gt;       &lt;date&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 2009-10-04   200</span>
+<span class="co">#&gt; 2 2009-10-04   120</span>
+<span class="co">#&gt; 3 2009-10-04   100</span>
+<span class="co">#&gt; 4 2009-10-04   100</span>
+<span class="co">#&gt; 5 2009-10-04    70</span>
+<span class="co">#&gt; 6 2009-10-04    50</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span></code></pre></div>
+</div>
+<div id="-mutate" class="section level2">
+<h2><span class="header-section-number">4.5</span> 数据扩展 mutate</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(date,<span class="kw">desc</span>(price)) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">substr</span>(date,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">month =</span> <span class="kw">substr</span>(date,<span class="dv">6</span>,<span class="dv">7</span>), 
+       <span class="dt">day =</span> <span class="kw">substr</span>(date,<span class="dv">9</span>,<span class="dv">10</span>))
+tbl
+<span class="co">#&gt; # A tibble: 100,000 x 5</span>
+<span class="co">#&gt;         date price  year month   day</span>
+<span class="co">#&gt;       &lt;date&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 2009-10-04   200  2009    10    04</span>
+<span class="co">#&gt; 2 2009-10-04   120  2009    10    04</span>
+<span class="co">#&gt; 3 2009-10-04   100  2009    10    04</span>
+<span class="co">#&gt; 4 2009-10-04   100  2009    10    04</span>
+<span class="co">#&gt; 5 2009-10-04    70  2009    10    04</span>
+<span class="co">#&gt; 6 2009-10-04    50  2009    10    04</span>
+<span class="co">#&gt; # ... with 9.999e+04 more rows</span>
+<span class="co"># transmute 则会删除原有的变量，如同 select 与 rename</span></code></pre></div>
+</div>
+<div id="-summarise" class="section level2">
+<h2><span class="header-section-number">4.6</span> 数据汇总 summarise</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(tbl, <span class="dt">max =</span> <span class="kw">max</span>(price),
+          <span class="dt">min =</span> <span class="kw">min</span>(price),
+          <span class="kw">mean</span>(price))
+<span class="co">#&gt; # A tibble: 1 x 3</span>
+<span class="co">#&gt;     max   min mean(price)</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  6780     0        60.8</span>
+
+<span class="kw">summarise</span>(tbl, <span class="dt">fisrt =</span> <span class="kw">first</span>(date),
+          <span class="dt">last =</span> <span class="kw">last</span>(date))
+<span class="co">#&gt; # A tibble: 1 x 2</span>
+<span class="co">#&gt;        fisrt       last</span>
+<span class="co">#&gt;       &lt;date&gt;     &lt;date&gt;</span>
+<span class="co">#&gt; 1 2009-10-04 2014-05-29</span>
+
+<span class="co"># 管道操作</span>
+df &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">price_sum =</span> <span class="kw">sum</span>(price), <span class="dt">price_mean =</span> <span class="kw">mean</span>(price))
+df
+<span class="co">#&gt; # A tibble: 1 x 2</span>
+<span class="co">#&gt;   price_sum price_mean</span>
+<span class="co">#&gt;       &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1   6077773       60.8</span></code></pre></div>
+</div>
+<div id="-join" class="section level2">
+<h2><span class="header-section-number">4.7</span> 数据连接 join</h2>
+<ul>
+<li>left_join 以左边为主，且保留所有值，用的最多，b 表追加在后面</li>
+<li>inner_join 只保留匹配的</li>
+<li>semi_join 只匹配左边的列</li>
+<li>anti_join 与上面函数相反</li>
+</ul>
+</div>
+<div id="-group_by" class="section level2">
+<h2><span class="header-section-number">4.8</span> 分组汇总 group_by</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tbl &lt;-<span class="st"> </span><span class="kw">select</span>(order, <span class="dt">date =</span> orderdate, <span class="dt">price =</span> totalprice) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">substr</span>(date,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">month =</span> <span class="kw">substr</span>(date,<span class="dv">6</span>,<span class="dv">7</span>), 
+         <span class="dt">day =</span> <span class="kw">substr</span>(date,<span class="dv">9</span>,<span class="dv">10</span>))
+
+by_year &lt;-<span class="st"> </span><span class="kw">group_by</span>(tbl, year) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(price), <span class="kw">sum</span>(price), <span class="kw">max</span>(month))
+
+by_year
+<span class="co">#&gt; # A tibble: 6 x 4</span>
+<span class="co">#&gt;    year mean(price) sum(price) max(month)</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;chr&gt;</span>
+<span class="co">#&gt; 1  2009        34.1     262628         12</span>
+<span class="co">#&gt; 2  2010        52.2     967429         12</span>
+<span class="co">#&gt; 3  2011        51.4    1380637         12</span>
+<span class="co">#&gt; 4  2012        68.4    1404113         12</span>
+<span class="co">#&gt; 5  2013        76.7    1633005         12</span>
+<span class="co">#&gt; 6  2014        84.5     429962         05</span>
+
+order_year &lt;-<span class="st"> </span><span class="kw">group_by</span>(tbl, year)</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="apply-.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hadley/r4ds/edit/master/dplyr.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
