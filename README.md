@@ -1,2 +1,2 @@
-# R_notes
-R notes while learning R
+# Notes and Codes while Learning R
+R 数据科学学习笔记

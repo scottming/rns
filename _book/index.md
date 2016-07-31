@@ -1,10 +1,16 @@
 
 ---
-title: "学 R 笔记"
+title: "Notes and Codes while Learning R"
 author: "Scott Ming"
 date: "2016-07-30"
+description: "这里是明生学 R 的笔记。"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
+url: 'https\://bookdown.org/scottming/rns/'
+github-repo: scottming/rns
+documentclass: book
 ---
 
-这里是明生学 R 的笔记。
+# Welcome {-}
+
+Bookdown 是个很赞的写作工具，在这里记录一些自己学习 R 与数据科学的笔记，如有错误，欢迎指出。我的 GitHub 地址：https://github.com/scottming

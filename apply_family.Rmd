@@ -1,4 +1,4 @@
-# apply 家族
+# 向量化操作（apply）
 
 - 参考1：[掌握R语言中的apply函数族](http://blog.fens.me/r-apply/)
 - 参考2：[R Grouping functions: sapply vs. lapply vs. apply. vs. tapply vs. by vs. aggregate](http://stackoverflow.com/questions/3505701/r-grouping-functions-sapply-vs-lapply-vs-apply-vs-tapply-vs-by-vs-aggrega)
