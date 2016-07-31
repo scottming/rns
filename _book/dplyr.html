@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="apply.html">
-
+<link rel="next" href="reshapetidy.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -132,6 +132,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#-summarise"><i class="fa fa-check"></i><b>4.6</b> 数据汇总 summarise</a></li>
 <li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#-join"><i class="fa fa-check"></i><b>4.7</b> 数据连接 join</a></li>
 <li class="chapter" data-level="4.8" data-path="dplyr.html"><a href="dplyr.html#-group_by"><i class="fa fa-check"></i><b>4.8</b> 分组汇总 group_by</a></li>
+</ul></li>
+<li class="part"><span><b>Wrangles</b></span></li>
+<li class="chapter" data-level="5" data-path="reshapetidy.html"><a href="reshapetidy.html"><i class="fa fa-check"></i><b>5</b> 数据整理、转换（reshape、tidy）</a><ul>
+<li class="chapter" data-level="5.1" data-path="reshapetidy.html"><a href="reshapetidy.html#reshape2"><i class="fa fa-check"></i><b>5.1</b> reshape2</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="reshapetidy.html"><a href="reshapetidy.html#melt-"><i class="fa fa-check"></i><b>5.1.1</b> melt 熔化转长格式</a></li>
+<li class="chapter" data-level="5.1.2" data-path="reshapetidy.html"><a href="reshapetidy.html#dcast-"><i class="fa fa-check"></i><b>5.1.2</b> dcast 重铸，长转宽</a></li>
+<li class="chapter" data-level="5.1.3" data-path="reshapetidy.html"><a href="reshapetidy.html#fun"><i class="fa fa-check"></i><b>5.1.3</b> fun,加上集合函数就能按正确方式集合了。</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="reshapetidy.html"><a href="reshapetidy.html#tidyr"><i class="fa fa-check"></i><b>5.2</b> tidyr</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="reshapetidy.html"><a href="reshapetidy.html#gather-"><i class="fa fa-check"></i><b>5.2.1</b> gather 聚合</a></li>
+<li class="chapter" data-level="5.2.2" data-path="reshapetidy.html"><a href="reshapetidy.html#spread-"><i class="fa fa-check"></i><b>5.2.2</b> spread 铺开</a></li>
+<li class="chapter" data-level="5.2.3" data-path="reshapetidy.html"><a href="reshapetidy.html#unite-"><i class="fa fa-check"></i><b>5.2.3</b> unite 合并</a></li>
+<li class="chapter" data-level="5.2.4" data-path="reshapetidy.html"><a href="reshapetidy.html#separate-"><i class="fa fa-check"></i><b>5.2.4</b> separate 拆分</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -409,13 +423,16 @@ order_year &lt;-<span class="st"> </span><span class="kw">group_by</span>(tbl, y
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="apply.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="apply.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reshapetidy.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

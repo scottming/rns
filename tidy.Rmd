@@ -1,0 +1,132 @@
+# (PART) Wrangles {-}
+
+# 数据整理、转换（reshape、tidy）
+## reshape2
+
+```{r}
+library(reshape2)
+subdata <-iris[,4:5]
+head(subdata)
+data_w <- unstack(subdata)
+colMeans(data_w)
+```
+
+实践中这种单纯的长宽格式并不多见，更常见的是直接一步得到结果，所以就需要强大的 reshape2 包
+
+参考[An Introduction to reshape2](http://seananderson.ca/2013/10/19/reshape.html)
+
+加载包和改数据名
+```{r}
+library(reshape2)
+names(airquality) <- tolower(names(airquality))
+head(airquality)
+```
+
+### melt 熔化转长格式
+
+```{r}
+aql <- melt(airquality)
+tail(aql)
+head(aql)
+```
+
+设定不需要变 value 的变量
+```{r}
+aql <- melt(airquality,id.vars = c('month', 'day'))
+names(airquality)
+head(aql)
+```
+
+改名
+```{r}
+aql <- melt(airquality, id.vars = c("month", "day"),
+            variable.name = "climate_variable",
+            value.name = "climate_value")
+head(aql)
+head(airquality)
+```
+
+### dcast 重铸，长转宽
+
+```{r}
+aql <- melt(airquality, id.vars = c("month", "day"))
+aqw  <- dcast(aql, month + day ~ variable)
+head(aql)
+head(aqw)
+```
+
+不足的id.var 会出错，会把值的数量统计出来
+```{r}
+dcast(aql, month ~ variable)
+```
+
+### fun,加上集合函数就能按正确方式集合了。
+
+```{r}
+dcast(aql, month ~ variable, fun.aggregate = mean,
+      na.rm = TRUE)
+```
+
+## tidyr
+新建一列数据
+```{r}
+mtcars$car <- rownames(mtcars)
+colnames(mtcars)
+mtcars <- mtcars[, c(12, 1:11)]
+head(mtcars)
+```
+
+### gather 聚合
+
+```{r}
+library(tidyr)
+mtcarsNew <- mtcars %>%
+  gather(attribute, value, -car) #不仅聚合，且命名了。
+head(mtcarsNew)
+tail(mtcarsNew)
+```
+
+gather mpg:gear 之间的列
+```{r}
+mtcarsNew <- mtcars %>%
+  gather(attribute, value, mpg:gear)
+```
+
+### spread 铺开
+
+```{r}
+mtcarsWide <- mtcarsNew %>%
+  spread(attribute, value)
+head(mtcarsWide)
+```
+
+### unite 合并
+
+```{r}
+set.seed(1)
+date <- as.Date('2016-06-01') + 0:14
+
+hour <- sample(1:24, 15)
+min <- sample(1:60, 15)
+second <- sample(1:60, 15)
+event <- sample(letters, 15)
+df <- data.frame(date, hour, min, second, event)
+head(df)
+
+df1 <- df %>%
+  unite(datehour, date, hour, sep = ' ') %>%
+  unite(datetime, datehour, min, second, sep = ':')
+df1
+```
+
+### separate 拆分
+
+```{r}
+df2 <- df1 %>%
+  separate(datetime, c('date', 'time'), sep = ' ') %>%
+  separate(time, c('hour', 'min', 'second'), sep = ':')
+df2
+
+```
+
+总的来说，tidyr 包比reshape语法更为简洁易懂， 更加方便。

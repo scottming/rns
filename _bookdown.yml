@@ -6,7 +6,10 @@ rmd_files: [
   "r_base.Rmd",
   "readr.Rmd",
   "apply_family.Rmd",
-  "dplyr.Rmd"
+  
+  "dplyr.Rmd",
+
+  "tidy.Rmd"
 ]
 
 before_chapter_script: "_common.R"
