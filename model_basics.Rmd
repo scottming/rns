@@ -6,7 +6,7 @@ library(modelr)
 options(na.action = na.warn)
 
 library(ggplot2)
-library(dplyr)
+library(dplyr);
 ```
 
 ```{r}
@@ -26,6 +26,51 @@ ggplot(sim1, aes(x, y)) +
   geom_point()
 ```
 
+一个函数和一个自变量，然后输出
+```{r}
+model1 <- function(a, data) {
+  a[1] + data$x * a[2]
+}
+model1(c(7,1.5), sim1)
+```
+
+根均方误差
+```{r}
+measure_distance <- function(mod, data) {
+  diff <- data$y - model1(mod, data)
+  sqrt(mean(diff^2))
+}
+
+measure_distance(c(7, 1.5), sim1)
+```
+
+mutate 添加新变量
 
 ```{r}
+sim1_dist <- function(a1, a2) {
+  measure_distance(c(a1, a2), sim1)
+}
+
+models <- models %>%
+ mutate(dist = purrr::map2_dbl(a1, a2, sim1_dist))
+
+models
+```
+
+map2_dbl 没有 data选项，会报错。
+```{r}
+#models %>%
+#purrr::map2_dbl(a1, a2, sim1_dist())
+```
+
+看看拟合情况
+```{r}
+ggplot(sim1, aes(x,y)) + 
+  geom_point(size = 2, colour = 'grey30') + 
+  geom_abline(
+    aes(intercept = a1, slope = a2, colour = -dist),
+    data = filter(models, rank(dist) <= 10)
+)
+```
+
 
