@@ -1,0 +1,51 @@
+# 线性回归
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+
+首先人工构造数据
+
+```{r}
+set.seed(1)
+x <- seq(1, 5, length.out = 100)
+noise = rnorm(n = 100, mean = 0, sd = 1)
+beta0 <- 1
+beta1 <- 2
+y <- beta0 +  beta1 * x + noise
+```
+
+```{r}
+plot(y~x)
+```
+
+
+定义一个线性函数
+```{r}
+x2y <- function(x,b0,b1) {
+  y <- b0 + b1 * x
+  return(y)
+}
+
+```
+
+
+计算残差
+```{r}
+sq_error <-function(x,y,b0,b1){
+  predictions <- x2y(x, b0, b1)
+  errors <- sum((y-predictions) ^ 2)
+  return(errors)
+}
+```
+
+```{r}
+results <- optim(c(0, 0),function(b)  sq_error(x,y,b[1],b[2]))
+
+results$par
+```
+
+
+
